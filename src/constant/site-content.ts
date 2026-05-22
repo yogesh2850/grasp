@@ -85,26 +85,7 @@ export const siteContent = {
     },
   ],
 
-  figures: [
-    {
-      src: '/images/thesis/hardware/hardware.png',
-      caption:
-        'Figure 1. The GRASP hardware platform: a UFactory xArm6 6-DOF manipulator mounted on an AgileX Bunker Pro tracked mobile base, equipped with a ZED X stereo camera for RGB-D perception.',
-      idx: 1,
-    },
-    {
-      src: '/images/thesis/perception/transformation.png',
-      caption:
-        'Figure 2. From 2D mask to 3D push point. The calibrated depth-unprojection pipeline converts the YOLOv8-seg stalk mask into a world-frame push target for inverse kinematics.',
-      idx: 2,
-    },
-    {
-      src: '/images/thesis/simulation/scene_layout.png',
-      caption:
-        'Figure 3. Isaac Lab simulation environment. Deformable maize plant models with per-episode log-uniform stiffness randomisation over [10⁷, 10⁸] Pa are placed in a field scene with the xArm6 mobile manipulator.',
-      idx: 3,
-    },
-  ],
+  figures: [],
 
   citation: `@mastersthesis{chawla2026grasp,
   title   = {GRASP: Generalizable Robotic Adaptation for Sim-to-Real Plant Interaction},
