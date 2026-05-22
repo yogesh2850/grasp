@@ -353,6 +353,20 @@ export default function HomePage() {
                 each episode.
               </p>
               <div className='grid gap-6 md:grid-cols-2'>
+                {/* 1. Maize plant vs mesh video comparison */}
+                <div>
+                  <VideoCompare
+                    leftSrc={asset('/video/correct_maize.mp4')}
+                    rightSrc={asset('/video/correct_maize_mesh.mp4')}
+                    leftLabel='Maize Plant'
+                    rightLabel='Plant Mesh'
+                    className='aspect-[4/3] w-full'
+                  />
+                  <p className='mt-2 text-center text-xs text-gray-400'>
+                    Maize Plant / Plant Mesh
+                  </p>
+                </div>
+
                 {siteContent.comparisons.slice(2, 4).map((cmp, i) => (
                   <div key={i}>
                     <ImageCompare
