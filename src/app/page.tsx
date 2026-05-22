@@ -147,25 +147,26 @@ export default function HomePage() {
               ))}
             </h1>
 
-            {/* Venue */}
-            <p
-              className='mb-5 text-base font-light tracking-wide text-white/80'
-              style={{ fontFamily: 'Raleway, sans-serif' }}
-            >
-              M.S. Thesis &mdash; University of Nebraska&ndash;Lincoln, 2026
-            </p>
-
             {/* Authors */}
             <div
-              className='mb-3 text-xl font-medium text-white'
+              className='mb-3 mt-2 text-xl font-medium text-white'
               style={{ fontFamily: 'Raleway, sans-serif' }}
             >
               {siteContent.authors.map((author, i) => (
                 <React.Fragment key={author.name}>
                   {i > 0 && ', '}
-                  {author.url
-                    ? <UnderlineLink href={author.url} className='text-white hover:text-gray-200'>{author.name}</UnderlineLink>
-                    : author.name}
+                  {author.url ? (
+                    <a
+                      href={author.url}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='underline decoration-white/40 underline-offset-2 transition-colors hover:text-black hover:decoration-black'
+                    >
+                      {author.name}
+                    </a>
+                  ) : (
+                    author.name
+                  )}
                   {author.affiliations && (
                     <sup className='ml-0.5 text-sm text-gray-300'>{author.affiliations}</sup>
                   )}
@@ -182,7 +183,7 @@ export default function HomePage() {
                 <div key={aff.id} className='flex items-center gap-2'>
                   <sup className='text-gray-300'>{aff.id}</sup>
                   {aff.logo && (
-                    <img src={asset(aff.logo)} alt='' className='h-5 object-contain brightness-0 invert opacity-80' loading='lazy' />
+                    <img src={asset(aff.logo)} alt='' className='h-5 object-contain opacity-90' loading='lazy' />
                   )}
                   <span>{aff.label}</span>
                 </div>
