@@ -510,6 +510,19 @@ export default function HomePage() {
           </div>
         </section>
 
+      <footer className='py-6 text-center text-xs text-gray-400'>
+        Website template modified from{' '}
+        <a
+          href='https://co-me-tokens.github.io/'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='underline underline-offset-2 hover:text-gray-600'
+        >
+          Co-Me
+        </a>
+        .
+      </footer>
+
       </main>
     </>
   );
