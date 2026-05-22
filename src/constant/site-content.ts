@@ -18,7 +18,7 @@ export const siteContent = {
     { name: 'Yogesh Chawla',      url: '#', affiliations: '1' },
     { name: 'Nitesh Subedi',      url: '',  affiliations: '3' },
     { name: 'Nils Hoppe',         url: '',  affiliations: '4' },
-    { name: 'Mridula Buragohain', url: '',  affiliations: '1' },
+    { name: 'Mridula Buragohain', url: '',  affiliations: '5' },
     { name: 'Krishna Muvva',      url: '',  affiliations: '2' },
     { name: 'Soumik Sarkar',      url: '',  affiliations: '3' },
     { name: 'Santosh Pitla',      url: '',  affiliations: '1' },
@@ -29,6 +29,7 @@ export const siteContent = {
     { id: '2', label: 'School of Computing, University of Nebraska–Lincoln', logo: '/images/unl_logo.png' },
     { id: '3', label: 'Iowa State University', logo: '' },
     { id: '4', label: 'Osnabrück University of Applied Sciences', logo: '' },
+    { id: '5', label: 'Robotics and Autonomous Systems, Arizona State University', logo: '' },
   ],
 
   links: {
