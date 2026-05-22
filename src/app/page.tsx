@@ -135,12 +135,16 @@ export default function HomePage() {
         <section className={clsx(bgColor, textColor, 'relative flex min-h-screen items-center justify-center overflow-hidden')}>
           <div className='layout relative z-20 flex min-h-screen flex-col items-center justify-center px-4 pb-12 pt-20 text-center'>
 
-            {/* Title — GRASP in light-grey, subtitle in white */}
+            {/* Title — GRASP as white→dark-grey gradient, subtitle white */}
             <h1 className='mb-3 mt-4 text-5xl font-bold leading-tight'>
               {siteContent.titleHighlights.map((part, i) => (
                 <span
                   key={i}
-                  className={part.highlight ? 'text-gray-300' : 'text-white'}
+                  className={
+                    part.highlight
+                      ? 'bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent'
+                      : 'text-white'
+                  }
                 >
                   {part.text}
                 </span>
@@ -190,12 +194,6 @@ export default function HomePage() {
               ))}
             </div>
 
-            {/* TL;DR */}
-            <div className='mb-6 max-w-2xl rounded-xl border border-primary-200 bg-primary-50/60 px-6 py-4 text-left text-sm leading-relaxed text-gray-700'>
-              <span className='font-bold text-primary-700'>TL;DR: </span>
-              {siteContent.tldr}
-            </div>
-
             {/* Links — white pill buttons */}
             <div className='flex flex-row flex-wrap items-center justify-center gap-3'>
               {[
@@ -240,6 +238,18 @@ export default function HomePage() {
               <source src={asset(siteContent.heroVideo)} type='video/mp4' />
             </video>
           )}
+        </section>
+
+        {/* ── TL;DR ────────────────────────────────────────────────────── */}
+        <section className={clsx(bgColor, textColor)}>
+          <div className='layout py-10'>
+            <div className='mx-auto max-w-3xl rounded-2xl border border-primary-200 bg-primary-50 px-8 py-6'>
+              <p className='text-base leading-relaxed text-gray-700'>
+                <span className='text-lg font-bold text-primary-700'>TL;DR: </span>
+                {siteContent.tldr}
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* ── Graphical Abstract ────────────────────────────────────────── */}
