@@ -207,7 +207,7 @@ export default function HomePage() {
                   className='flex items-center gap-2 rounded-full border border-white/60 bg-white/10 px-5 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/25 hover:border-white'
                   style={{ fontFamily: 'Raleway, sans-serif' }}
                 >
-                  <img src={asset(icon)} alt={alt} className='h-5 w-5 brightness-0 invert' loading='lazy' />
+                  <img src={asset(icon)} alt={alt} className='h-5 w-5' loading='lazy' />
                   {label}
                 </a>
               ))}
