@@ -14,7 +14,7 @@ import { asset } from '@/lib/asset';
 
 /* ─── Nav ───────────────────────────────────────────────────────────────── */
 const NAV_LINKS = [
-  { label: 'Abstract',    href: '#abstract'     },
+  { label: 'Introduction', href: '#abstract'     },
   { label: 'Overview',    href: '#overview'     },
   { label: 'Methodology', href: '#methodology'  },
   { label: 'Results',     href: '#results'      },
@@ -212,7 +212,7 @@ export default function HomePage() {
         {/* ── Abstract (with graphical abstract image above text) ───────── */}
         <section id='abstract' className={clsx(bgColor, textColor)}>
           <div className='layout py-12'>
-            <h2 className='pb-6 text-center'>Abstract</h2>
+            <h2 className='pb-6 text-center'>Introduction</h2>
 
             {/* Graphical abstract image */}
             {siteContent.graphicalAbstract ? (
@@ -233,7 +233,11 @@ export default function HomePage() {
               </div>
             )}
 
-            <p className='text-pretty'>{siteContent.abstract}</p>
+            <div className='space-y-4'>
+              {siteContent.abstract.split('\n\n').map((para, i) => (
+                <p key={i} className='text-pretty'>{para}</p>
+              ))}
+            </div>
           </div>
         </section>
 
