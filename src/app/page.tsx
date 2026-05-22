@@ -52,6 +52,8 @@ export default function HomePage() {
   }));
 
   const sliderRef = useRef<HTMLDivElement | null>(null);
+  const [perceptIdx, setPerceptIdx] = React.useState(0);
+  const perceptTotal = siteContent.comparisons.length;
 
   useEffect(() => {
     const slider = sliderRef.current;
@@ -265,25 +267,82 @@ export default function HomePage() {
       <section className={clsx(secondaryBgColor, textColor)}>
         <div className='layout pb-4 pt-12'>
           <h2 className='mb-2'>Perception Pipeline</h2>
-          <p className='mb-8 text-sm text-gray-500'>
+          <p className='mb-6 text-sm text-gray-500'>
             SAM&nbsp;3 zero-shot annotations are distilled into a real-time YOLOv8-seg model.
             Drag the slider to compare raw inputs and segmentation outputs.
           </p>
-        </div>
-        <div className='wide-layout grid grid-cols-2 items-stretch gap-2 pb-12 lg:grid-cols-4'>
-          {siteContent.comparisons.map((cmp, i) => (
-            <ImageCompare
-              key={i}
-              leftSrc={asset(cmp.leftSrc)}
-              rightSrc={asset(cmp.rightSrc)}
-              leftAlt={cmp.leftLabel}
-              rightAlt={cmp.rightLabel}
-              initial={0.5}
-              leftLabel={cmp.leftLabel}
-              rightLabel={cmp.rightLabel}
-              className='col-span-1 aspect-[4/3]'
-            />
-          ))}
+
+          {/* Tab row */}
+          <div className='mb-4 flex flex-wrap gap-2'>
+            {siteContent.comparisons.map((cmp, i) => (
+              <button
+                key={i}
+                onClick={() => setPerceptIdx(i)}
+                className={clsx(
+                  'rounded-full px-4 py-1.5 text-sm font-medium transition-colors',
+                  i === perceptIdx
+                    ? 'bg-primary-600 text-white shadow'
+                    : 'bg-white text-gray-500 ring-1 ring-gray-200 hover:bg-gray-50'
+                )}
+              >
+                {cmp.leftLabel} / {cmp.rightLabel}
+              </button>
+            ))}
+          </div>
+
+          {/* Single big compare panel */}
+          <div className='relative'>
+            {siteContent.comparisons.map((cmp, i) => (
+              <div key={i} className={i === perceptIdx ? 'block' : 'hidden'}>
+                <ImageCompare
+                  leftSrc={asset(cmp.leftSrc)}
+                  rightSrc={asset(cmp.rightSrc)}
+                  leftAlt={cmp.leftLabel}
+                  rightAlt={cmp.rightLabel}
+                  initial={0.5}
+                  leftLabel={cmp.leftLabel}
+                  rightLabel={cmp.rightLabel}
+                  className='aspect-[16/7] w-full'
+                  fit='contain'
+                />
+              </div>
+            ))}
+
+            {/* Prev / Next arrows */}
+            <button
+              onClick={() => setPerceptIdx((perceptIdx - 1 + perceptTotal) % perceptTotal)}
+              aria-label='Previous'
+              className='absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white backdrop-blur hover:bg-black/60'
+            >
+              <svg className='h-5 w-5' fill='none' stroke='currentColor' strokeWidth={2.5} viewBox='0 0 24 24'>
+                <path strokeLinecap='round' strokeLinejoin='round' d='M15 19l-7-7 7-7' />
+              </svg>
+            </button>
+            <button
+              onClick={() => setPerceptIdx((perceptIdx + 1) % perceptTotal)}
+              aria-label='Next'
+              className='absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white backdrop-blur hover:bg-black/60'
+            >
+              <svg className='h-5 w-5' fill='none' stroke='currentColor' strokeWidth={2.5} viewBox='0 0 24 24'>
+                <path strokeLinecap='round' strokeLinejoin='round' d='M9 5l7 7-7 7' />
+              </svg>
+            </button>
+          </div>
+
+          {/* Dot indicators */}
+          <div className='mt-4 flex justify-center gap-2 pb-12'>
+            {siteContent.comparisons.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setPerceptIdx(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={clsx(
+                  'h-2 rounded-full transition-all',
+                  i === perceptIdx ? 'w-6 bg-primary-600' : 'w-2 bg-gray-300 hover:bg-gray-400'
+                )}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
