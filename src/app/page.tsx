@@ -66,6 +66,7 @@ export default function HomePage() {
 
   return (
     <main>
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section
         className={clsx(
           bgColor,
@@ -81,6 +82,9 @@ export default function HomePage() {
               </span>
             ))}
           </h1>
+          <div className='container pb-2'>
+            <p className='text-sm text-gray-500'>M.S. Thesis &mdash; University of Nebraska&ndash;Lincoln, 2026</p>
+          </div>
           <div className='container pb-6'>
             <span className='text-lg'>
               {siteContent.authors.map((author, i) => (
@@ -133,20 +137,26 @@ export default function HomePage() {
             </ArrowLink>
           </div>
         </div>
-        <div
-          className={clsx(
-            'absolute z-10 min-h-full min-w-full max-w-none',
-            maskColor
-          )}
-        />
-        <div className='absolute bottom-4 left-4 z-20 text-left text-sm'>
+
+        {/* Affiliation logos bottom-left */}
+        <div className='absolute bottom-4 left-4 z-20 flex flex-col gap-2 text-left text-sm'>
           {siteContent.affiliations.map((aff) => (
-            <p key={aff.id} className='mb-2'>
+            <div key={aff.id} className='flex items-center gap-2'>
               <span className='align-super text-sm'>{aff.id}</span>
-              <span className='ml-2'>{aff.label}</span>
-            </p>
+              {aff.logo ? (
+                <img
+                  src={asset(aff.logo)}
+                  alt={aff.label}
+                  className='h-8 object-contain'
+                  loading='lazy'
+                />
+              ) : (
+                <span>{aff.label}</span>
+              )}
+            </div>
           ))}
         </div>
+
         {siteContent.heroVideo ? (
           <video
             autoPlay
@@ -161,6 +171,7 @@ export default function HomePage() {
         )}
       </section>
 
+      {/* ── Abstract ─────────────────────────────────────────────────────── */}
       <section className={clsx(bgColor, textColor)}>
         <div className='layout py-12'>
           <h2 className='pb-4 text-center'>Abstract</h2>
@@ -168,6 +179,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Video slider ─────────────────────────────────────────────────── */}
       <section className='bg-dark py-8 text-gray-200'>
         <div className='relative'>
           <div
@@ -190,9 +202,50 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Overview ─────────────────────────────────────────────────────── */}
+      <section className={clsx(bgColor, textColor)}>
+        <div className='layout py-12'>
+          <h2 className='pb-6'>Overview</h2>
+          <div className='grid gap-8 md:grid-cols-3'>
+            <div className='rounded-xl border border-gray-200 p-6'>
+              <h3 className='mb-2 text-lg font-semibold text-primary-600'>Problem</h3>
+              <p className='text-sm leading-relaxed'>
+                Maize stalk rot causes 10–30% annual yield losses by degrading internal stem tissue
+                while leaving the outer canopy visually intact. The current field standard — a
+                manual push test — cannot scale to the 30,000+ plants per acre needed for
+                population-level assessment.
+              </p>
+            </div>
+            <div className='rounded-xl border border-gray-200 p-6'>
+              <h3 className='mb-2 text-lg font-semibold text-primary-600'>Approach</h3>
+              <p className='text-sm leading-relaxed'>
+                GRASP trains a mobile manipulator entirely in GPU-accelerated simulation
+                (NVIDIA Isaac Lab) using reinforcement learning with deformable plant models.
+                A SAM&nbsp;3 → YOLOv8-seg perception pipeline provides real-time stalk
+                segmentation without any manual labelling.
+              </p>
+            </div>
+            <div className='rounded-xl border border-gray-200 p-6'>
+              <h3 className='mb-2 text-lg font-semibold text-primary-600'>Key Result</h3>
+              <p className='text-sm leading-relaxed'>
+                The RL policy successfully transfers from simulation to the physical xArm6 +
+                Bunker&nbsp;Pro platform, executing controlled lateral push tests and recovering
+                a continuous stiffness estimate — the first fully autonomous robotic push-test
+                system for maize stalk phenotyping.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Perception comparison ─────────────────────────────────────────── */}
       <section className={clsx(secondaryBgColor, textColor)}>
-        <div className='layout pb-4 pt-4'>
-          <h2 className='mb-4 mt-12'>Qualitative Comparison</h2>
+        <div className='layout pb-4 pt-12'>
+          <h2 className='mb-2'>Perception Pipeline</h2>
+          <p className='mb-8 text-sm text-gray-500'>
+            SAM&nbsp;3 zero-shot annotations are distilled into a real-time YOLOv8-seg model.
+            Drag the slider to compare raw inputs and segmentation outputs.
+          </p>
         </div>
         <div className='wide-layout grid grid-cols-2 items-stretch gap-2 pb-12 lg:grid-cols-4'>
           {siteContent.comparisons.map((cmp, i) => (
@@ -211,9 +264,40 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Methods ──────────────────────────────────────────────────────── */}
       <section className={clsx(bgColor, textColor)}>
         <div className='layout py-12'>
           <h2 className='pb-4'>Methods</h2>
+
+          {/* Hardware */}
+          <div className='mb-12'>
+            <h3 className='mb-3 text-xl font-semibold'>Hardware Platform</h3>
+            <p className='mb-6 text-sm leading-relaxed text-gray-500'>
+              The GRASP robot is a UFactory xArm6 (6-DOF, 5&nbsp;kg payload, ±0.1&nbsp;mm repeatability)
+              mounted on an AgileX Bunker&nbsp;Pro tracked mobile base. A ZED&nbsp;X stereo camera
+              provides RGB-D perception; a gripper-mounted depth camera provides close-range feedback
+              for contact control.
+            </p>
+            <div className='grid gap-4 md:grid-cols-3'>
+              {[
+                { src: '/images/thesis/hardware/xarm6.png', label: 'UFactory xArm6' },
+                { src: '/images/thesis/hardware/hardware.png', label: 'Full Platform' },
+                { src: '/images/thesis/hardware/zed.jpg', label: 'ZED X Camera' },
+              ].map((img) => (
+                <div key={img.label} className='overflow-hidden rounded-xl border border-gray-200'>
+                  <img
+                    src={asset(img.src)}
+                    alt={img.label}
+                    className='w-full object-cover'
+                    loading='lazy'
+                  />
+                  <p className='px-3 py-2 text-center text-xs text-gray-500'>{img.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Method figures from site-content */}
           {siteContent.figures.map((fig) => (
             <React.Fragment key={fig.idx}>
               <Figure
@@ -225,9 +309,38 @@ export default function HomePage() {
               <div className='pb-16' />
             </React.Fragment>
           ))}
+
+          {/* Contributions */}
+          <h3 className='mb-4 text-xl font-semibold'>Contributions</h3>
+          <ol className='ml-6 list-decimal space-y-3 text-sm leading-relaxed text-gray-600'>
+            <li>
+              A <strong>deformable plant-interaction simulation</strong> environment in NVIDIA Isaac Lab
+              with FEM-based maize plant physics and per-episode stiffness randomisation over
+              [10⁷, 10⁸]&nbsp;Pa.
+            </li>
+            <li>
+              A <strong>reinforcement-learning formulation</strong> for autonomous stalk assessment
+              decomposed into four phases — navigation, visual alignment, push quality, and stiffness
+              estimation — with rewards tied to Euler–Bernoulli beam theory.
+            </li>
+            <li>
+              A <strong>zero-shot-to-real-time perception pipeline</strong> using SAM&nbsp;3 for
+              automated annotation of ~1,500 field images, distilled into a YOLOv8-seg model running
+              at 30&nbsp;Hz.
+            </li>
+            <li>
+              A <strong>calibrated camera-to-arm pipeline</strong> with CATIA-measured extrinsics,
+              stereo-baseline correction, and depth-based 3-D push-point extraction.
+            </li>
+            <li>
+              An <strong>agronomically grounded robotic phenotyping instrument</strong> that converts
+              force–deflection measurements into a continuous stalk stiffness estimate.
+            </li>
+          </ol>
         </div>
       </section>
 
+      {/* ── Citation ─────────────────────────────────────────────────────── */}
       <section className={clsx(secondaryBgColor, textColor)}>
         <div className='layout pb-48 pt-4'>
           <h2 className='mb-4 mt-12'>Citation</h2>

@@ -4,23 +4,23 @@
  */
 
 export const siteContent = {
-  title: 'GRASP: Your Full Project Title Here',
+  title: 'GRASP: Generalizable Robotic Adaptation for Sim-to-Real Plant Interaction',
   titleHighlights: [
-    { text: 'GR', highlight: true },
+    { text: 'G', highlight: true },
+    { text: 'R', highlight: true },
     { text: 'A', highlight: true },
-    { text: 'SP', highlight: true },
-    { text: ': Your Subtitle or Expansion', highlight: false },
+    { text: 'S', highlight: true },
+    { text: 'P', highlight: true },
+    { text: ': Generalizable Robotic Adaptation for Sim-to-Real Plant Interaction', highlight: false },
   ] as { text: string; highlight: boolean }[],
 
   authors: [
-    { name: 'Author One', url: '#', affiliations: '1' },
-    { name: 'Author Two', url: '#', affiliations: '1' },
-    { name: 'Author Three', url: '', affiliations: '2' },
+    { name: 'Yogesh Chawla', url: '#', affiliations: '1' },
+    { name: 'Santosh Pitla', url: '', affiliations: '1' },
   ],
 
   affiliations: [
-    { id: '1', label: 'Institution One (add logo to public/images/)' },
-    { id: '2', label: 'Institution Two' },
+    { id: '1', label: 'University of Nebraska–Lincoln', logo: '/images/unl_logo.png' },
   ],
 
   links: {
@@ -29,7 +29,7 @@ export const siteContent = {
     pdf: '#',
   },
 
-  abstract: `Replace this placeholder abstract with your paper summary. You can use <b>bold</b> in JSX on the page, or keep plain text here. Math via KaTeX is supported, e.g. speedup of $2\\times$ when wired in page.tsx.`,
+  abstract: `Early and accurate identification of plant diseases is critical for mitigating crop losses and ensuring sustainable agriculture. Robotics is changing this on a large scale — but one issue that makes agricultural robotics uniquely challenging is the variability and unstructured nature of real-world environments. Training a robot to push a maize stalk is a difficult task due to the high variability in plant biomechanical properties. To solve this, GRASP presents a framework for training plant manipulation (pushing) to estimate stiffness in a physics-based simulator — NVIDIA's Isaac Lab — using a camera's input. A reinforcement learning algorithm is trained in a simulated environment replicating the real-world field setting. As input, it takes an RGB-D image from a camera, a ground-truth segmented mask of the stalk, and controls the manipulator's torque to push the plant across multiple stiffness cases. Results demonstrate strong sim-to-real transfer performance across most conditions. The use of high-fidelity simulators can be replicated and extended to other manipulation-based agricultural applications.`,
 
   /** Set to a path under public/video/ when you add hero background video */
   heroVideo: '' as string,
@@ -42,50 +42,65 @@ export const siteContent = {
 
   comparisons: [
     {
-      leftSrc: '/images/placeholder/baseline.svg',
-      rightSrc: '/images/placeholder/ours.svg',
-      leftLabel: 'Baseline',
-      rightLabel: 'GRASP',
+      leftSrc: '/images/thesis/perception/zed_left_rgb_step0000008.png',
+      rightSrc: '/images/thesis/perception/zed_left_semantic_segmentation_step0000008.png',
+      leftLabel: 'Raw RGB',
+      rightLabel: 'Segmentation',
     },
     {
-      leftSrc: '/images/placeholder/baseline.svg',
-      rightSrc: '/images/placeholder/ours.svg',
-      leftLabel: 'Baseline',
-      rightLabel: 'GRASP',
+      leftSrc: '/images/thesis/perception/sam3_1.png',
+      rightSrc: '/images/thesis/perception/sam3_2.png',
+      leftLabel: 'SAM 3 Input',
+      rightLabel: 'SAM 3 Mask',
     },
     {
-      leftSrc: '/images/placeholder/baseline.svg',
-      rightSrc: '/images/placeholder/ours.svg',
-      leftLabel: 'Baseline',
-      rightLabel: 'GRASP',
+      leftSrc: '/images/thesis/simulation/plant.png',
+      rightSrc: '/images/thesis/simulation/plant_textured_render.png',
+      leftLabel: 'Plant Mesh',
+      rightLabel: 'Textured Render',
     },
     {
-      leftSrc: '/images/placeholder/baseline.svg',
-      rightSrc: '/images/placeholder/ours.svg',
-      leftLabel: 'Baseline',
-      rightLabel: 'GRASP',
+      leftSrc: '/images/thesis/simulation/scene_layout.png',
+      rightSrc: '/images/thesis/simulation/scene_layout_2.png',
+      leftLabel: 'Scene Layout',
+      rightLabel: 'Scene Variant',
     },
   ],
 
   figures: [
     {
-      src: '/images/placeholder/method-1.svg',
+      src: '/images/thesis/hardware/hardware.png',
       caption:
-        'Figure 1. Replace with your method overview figure (public/images/).',
+        'Figure 1. The GRASP hardware platform: a UFactory xArm6 6-DOF manipulator mounted on an AgileX Bunker Pro tracked mobile base, equipped with a ZED X stereo camera for RGB-D perception.',
       idx: 1,
     },
     {
-      src: '/images/placeholder/method-2.svg',
+      src: '/images/thesis/rl/rl_training_pipeline.png',
       caption:
-        'Figure 2. Replace with your second figure and caption.',
+        'Figure 2. End-to-end RL training pipeline. The policy receives only signals available on the physical robot; privileged information (true Young\'s modulus, stalk nodal positions, ground-truth segmentation) is confined to reward shaping during simulation training.',
       idx: 2,
+    },
+    {
+      src: '/images/thesis/perception/transformation.png',
+      caption:
+        'Figure 3. From 2D mask to 3D push point. The calibrated depth-unprojection pipeline converts the YOLOv8-seg stalk mask into a world-frame push target for inverse kinematics.',
+      idx: 3,
+    },
+    {
+      src: '/images/thesis/simulation/scene_layout.png',
+      caption:
+        'Figure 4. Isaac Lab simulation environment. Deformable maize plant models with per-episode log-uniform stiffness randomisation over [10⁷, 10⁸] Pa are placed in a field scene with the xArm6 mobile manipulator.',
+      idx: 4,
     },
   ],
 
-  citation: `@misc{grasp2026placeholder,
-      title={GRASP: Your Project Title},
-      author={Author One and Author Two},
-      year={2026},
-      note={Replace with your BibTeX},
+  citation: `@mastersthesis{chawla2026grasp,
+  title   = {GRASP: Generalizable Robotic Adaptation for Sim-to-Real Plant Interaction},
+  author  = {Chawla, Yogesh},
+  school  = {University of Nebraska--Lincoln},
+  year    = {2026},
+  month   = {June},
+  note    = {M.S. Thesis, Biological Systems Engineering / Computer Science},
+  advisor = {Santosh Pitla},
 }`,
 };
