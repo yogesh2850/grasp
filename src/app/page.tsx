@@ -353,6 +353,7 @@ export default function HomePage() {
                 running at 30&nbsp;Hz. Drag each slider to compare input and output.
               </p>
               <div className='grid gap-6 md:grid-cols-2'>
+                {/* SAM3 image comparisons */}
                 {siteContent.comparisons.slice(0, 2).map((cmp, i) => (
                   <div key={i}>
                     <ImageCompare
@@ -367,44 +368,35 @@ export default function HomePage() {
                     </p>
                   </div>
                 ))}
-              </div>
-            </div>
 
-            {/* ── 3D Point Cloud slider ── */}
-            <div className='mb-14'>
-              <p className='mb-4 text-sm leading-relaxed text-gray-500'>
-                Depth-camera point cloud used for 3-D stalk localization. Drag to reveal.
-              </p>
-              <div className='mx-auto max-w-lg'>
-                <ImageCompare
-                  leftSrc={asset('/images/thesis/perception/3d_pc.gif')}
-                  rightSrc={asset('/images/blank.svg')}
-                  leftAlt='3D Point Cloud'
-                  rightAlt=''
-                  initial={0.9}
-                  leftLabel='3D Point Cloud'
-                  className='aspect-[4/3] w-full' fit='contain'
-                />
-                <p className='mt-2 text-center text-xs text-gray-400'>3D Point Cloud</p>
-              </div>
-            </div>
+                {/* 3D Point Cloud reveal */}
+                <div>
+                  <ImageCompare
+                    leftSrc={asset('/images/thesis/perception/3d_pc.gif')}
+                    rightSrc={asset('/images/blank.svg')}
+                    leftAlt='3D Point Cloud'
+                    rightAlt=''
+                    initial={0.9}
+                    leftLabel='3D Point Cloud'
+                    className='aspect-[4/3] w-full' fit='contain'
+                  />
+                  <p className='mt-2 text-center text-xs text-gray-400'>3D Point Cloud</p>
+                </div>
 
-            {/* ── YOLO performance comparison ── */}
-            <div className='mb-14'>
-              <p className='mb-4 text-sm leading-relaxed text-gray-500'>
-                Drag the divider to compare stalk-detection overlays between YOLOv11n (lightweight,
-                left) and YOLOv11l (large, right) on the same field sequence.
-              </p>
-              <VideoCompare
-                leftSrc={asset('/video/yolo_v11n.mp4')}
-                rightSrc={asset('/video/yolo_v11l.mp4')}
-                leftLabel='YOLOv11n'
-                rightLabel='YOLOv11l'
-                className='w-full'
-              />
-              <p className='mt-2 text-center text-xs text-gray-400'>
-                YOLOv11n vs YOLOv11l — stalk detection overlay
-              </p>
+                {/* YOLOv11n vs YOLOv11l video comparison */}
+                <div>
+                  <VideoCompare
+                    leftSrc={asset('/video/yolo_v11n.mp4')}
+                    rightSrc={asset('/video/yolo_v11l.mp4')}
+                    leftLabel='YOLOv11n'
+                    rightLabel='YOLOv11l'
+                    className='aspect-[4/3] w-full'
+                  />
+                  <p className='mt-2 text-center text-xs text-gray-400'>
+                    YOLOv11n vs YOLOv11l — stalk detection overlay
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* ── 3. Isaac Lab Setup ── */}

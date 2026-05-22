@@ -74,7 +74,7 @@ export default function VideoCompare({
     <div
       ref={containerRef}
       className={[
-        'relative aspect-video overflow-hidden select-none touch-none cursor-col-resize',
+        'relative overflow-hidden select-none touch-none cursor-col-resize',
         'rounded-xl shadow ring-1 ring-black/10 bg-black',
         className,
       ].join(' ')}
