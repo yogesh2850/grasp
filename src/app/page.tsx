@@ -6,6 +6,7 @@ import '@/lib/env';
 
 import Figure from '@/components/Figure';
 import ImageCompare from '@/components/Compare';
+import VideoCompare from '@/components/VideoCompare';
 import ArrowLink from '@/components/links/ArrowLink';
 import UnderlineLink from '@/components/links/UnderlineLink';
 import { siteContent } from '@/constant/site-content';
@@ -367,6 +368,43 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* ── 3D Point Cloud slider ── */}
+            <div className='mb-14'>
+              <p className='mb-4 text-sm leading-relaxed text-gray-500'>
+                Depth-camera point cloud used for 3-D stalk localization. Drag to reveal.
+              </p>
+              <div className='mx-auto max-w-lg'>
+                <ImageCompare
+                  leftSrc={asset('/images/thesis/perception/3d_pc.gif')}
+                  rightSrc={asset('/images/blank.svg')}
+                  leftAlt='3D Point Cloud'
+                  rightAlt=''
+                  initial={0.9}
+                  leftLabel='3D Point Cloud'
+                  className='aspect-[4/3] w-full' fit='contain'
+                />
+                <p className='mt-2 text-center text-xs text-gray-400'>3D Point Cloud</p>
+              </div>
+            </div>
+
+            {/* ── YOLO performance comparison ── */}
+            <div className='mb-14'>
+              <p className='mb-4 text-sm leading-relaxed text-gray-500'>
+                Drag the divider to compare stalk-detection overlays between YOLOv11n (lightweight,
+                left) and YOLOv11l (large, right) on the same field sequence.
+              </p>
+              <VideoCompare
+                leftSrc={asset('/video/yolo_v11n.mp4')}
+                rightSrc={asset('/video/yolo_v11l.mp4')}
+                leftLabel='YOLOv11n'
+                rightLabel='YOLOv11l'
+                className='w-full'
+              />
+              <p className='mt-2 text-center text-xs text-gray-400'>
+                YOLOv11n vs YOLOv11l — stalk detection overlay
+              </p>
             </div>
 
             {/* ── 3. Isaac Lab Setup ── */}
