@@ -135,38 +135,54 @@ export default function HomePage() {
         <section className={clsx(bgColor, textColor, 'relative flex min-h-screen items-center justify-center overflow-hidden')}>
           <div className='layout relative z-20 flex min-h-screen flex-col items-center justify-center px-4 pb-12 pt-20 text-center'>
 
-            <h1 className='mb-3 mt-4 text-5xl'>
+            {/* Title — GRASP in light-grey, subtitle in white */}
+            <h1 className='mb-3 mt-4 text-5xl font-bold leading-tight'>
               {siteContent.titleHighlights.map((part, i) => (
-                <span key={i} className={part.highlight ? hlTextColor : undefined}>{part.text}</span>
+                <span
+                  key={i}
+                  className={part.highlight ? 'text-gray-300' : 'text-white'}
+                >
+                  {part.text}
+                </span>
               ))}
             </h1>
 
-            <p className='mb-5 text-sm text-gray-500'>
+            {/* Venue */}
+            <p
+              className='mb-5 text-base font-light tracking-wide text-white/80'
+              style={{ fontFamily: 'Raleway, sans-serif' }}
+            >
               M.S. Thesis &mdash; University of Nebraska&ndash;Lincoln, 2026
             </p>
 
             {/* Authors */}
-            <div className='mb-3 text-lg'>
+            <div
+              className='mb-3 text-xl font-medium text-white'
+              style={{ fontFamily: 'Raleway, sans-serif' }}
+            >
               {siteContent.authors.map((author, i) => (
                 <React.Fragment key={author.name}>
                   {i > 0 && ', '}
                   {author.url
-                    ? <UnderlineLink href={author.url}>{author.name}</UnderlineLink>
+                    ? <UnderlineLink href={author.url} className='text-white hover:text-gray-200'>{author.name}</UnderlineLink>
                     : author.name}
                   {author.affiliations && (
-                    <sup className='ml-0.5 text-xs text-primary-600'>{author.affiliations}</sup>
+                    <sup className='ml-0.5 text-sm text-gray-300'>{author.affiliations}</sup>
                   )}
                 </React.Fragment>
               ))}
             </div>
 
             {/* Affiliations */}
-            <div className='mb-6 flex flex-col items-center gap-1 text-xs text-gray-500'>
+            <div
+              className='mb-6 flex flex-col items-center gap-1.5 text-sm font-light text-white/75'
+              style={{ fontFamily: 'Raleway, sans-serif' }}
+            >
               {siteContent.affiliations.map((aff) => (
-                <div key={aff.id} className='flex items-center gap-1.5'>
-                  <sup className='text-primary-600'>{aff.id}</sup>
+                <div key={aff.id} className='flex items-center gap-2'>
+                  <sup className='text-gray-300'>{aff.id}</sup>
                   {aff.logo && (
-                    <img src={asset(aff.logo)} alt='' className='h-4 object-contain opacity-80' loading='lazy' />
+                    <img src={asset(aff.logo)} alt='' className='h-5 object-contain brightness-0 invert opacity-80' loading='lazy' />
                   )}
                   <span>{aff.label}</span>
                 </div>
