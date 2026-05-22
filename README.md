@@ -41,19 +41,17 @@ Output goes to **`docs/`** (includes `.nojekyll`).
 
 ### GitHub Pages settings
 
-**Option A — GitHub Actions (recommended)**
+The built site is committed in **`docs/`**. In the repo:
 
-1. Push this repo (includes `.github/workflows/deploy-pages.yml`).
-2. **Settings → Pages → Build and deployment → Source:** **GitHub Actions**.
-3. Each push to `master` runs `npm run build` and deploys the `docs/` output to https://yogesh2850.github.io/grasp
+**Settings → Pages → Build and deployment**
 
-**Option B — Commit built `docs/` manually**
+- **Source:** Deploy from a branch  
+- **Branch:** `master`  
+- **Folder:** `/docs`
 
-1. Run `npm run build` locally.
-2. Commit the `docs/` folder.
-3. **Settings → Pages → Source:** Deploy from branch → `master` → **`/docs`**
+URL: https://yogesh2850.github.io/grasp
 
-Remove the old root-only `index.html` setup; the Next.js site lives in `docs/` after build.
+After you change content, run `npm run build` and commit `docs/` again (or enable **GitHub Actions** as the Pages source to rebuild on each push).
 
 ## Project structure
 
