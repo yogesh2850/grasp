@@ -275,29 +275,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Video slider ─────────────────────────────────────────────── */}
-        <section className='bg-dark py-8 text-gray-200'>
-          <div className='relative'>
-            <div ref={sliderRef}
-              className='scrollbar-dark flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-48 pb-2'
-              aria-label='Project highlights slider'>
-              {sliderItems.map((item) => (
-                <article key={item.title}
-                  className='w-[85%] flex-none snap-center rounded-2xl border border-white/10 bg-gray-900/50 p-6 shadow-2xl backdrop-blur md:w-[70%] lg:w-[55%]'>
-                  <h3 className='mb-4 text-2xl font-semibold'>{item.title}</h3>
-                  {item.content}
-                </article>
-              ))}
-            </div>
-            <div className='pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-dark to-transparent' />
-            <div className='pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-dark to-transparent' />
-          </div>
-        </section>
-
         {/* ── Overview ─────────────────────────────────────────────────── */}
-        <section id='overview' className={clsx(bgColor, textColor)}>
-          <div className='layout py-12'>
-            <h2 className='pb-6'>Overview</h2>
+        <section id='overview' className='bg-dark py-12 text-gray-200'>
+          <div className='layout'>
+            <h2 className='pb-6 text-white'>Overview</h2>
             <div className='grid gap-8 md:grid-cols-3'>
               {[
                 {
@@ -313,10 +294,27 @@ export default function HomePage() {
                   body: 'The RL policy successfully transfers from simulation to the physical xArm6 + Bunker Pro platform, executing controlled lateral push tests and recovering a continuous stiffness estimate — the first fully autonomous robotic push-test system for maize stalk phenotyping.',
                 },
               ].map(({ title, body }) => (
-                <div key={title} className='rounded-xl border border-gray-200 p-6'>
-                  <h3 className='mb-2 text-lg font-semibold text-primary-600'>{title}</h3>
-                  <p className='text-sm leading-relaxed'>{body}</p>
+                <div key={title} className='rounded-xl border border-white/10 bg-gray-900/50 p-6 backdrop-blur'>
+                  <h3 className='mb-2 text-lg font-semibold text-primary-400'>{title}</h3>
+                  <p className='text-sm leading-relaxed text-gray-300'>{body}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Video slider ─────────────────────────────────────────────── */}
+        <section className={clsx(bgColor, textColor, 'py-8')}>
+          <div className='relative'>
+            <div ref={sliderRef}
+              className='flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-48 pb-2'
+              aria-label='Project highlights slider'>
+              {sliderItems.map((item) => (
+                <article key={item.title}
+                  className='w-[85%] flex-none snap-center rounded-2xl border border-gray-200 bg-gray-50 p-6 shadow-sm md:w-[70%] lg:w-[55%]'>
+                  <h3 className='mb-4 text-2xl font-semibold text-gray-700'>{item.title}</h3>
+                  {item.content}
+                </article>
               ))}
             </div>
           </div>
