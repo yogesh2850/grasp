@@ -38,6 +38,11 @@ export const siteContent = {
     pdf: '#',
   },
 
+  tldr: `GRASP trains a mobile manipulator entirely in GPU-accelerated simulation to autonomously replicate the agronomist's maize push test — using RL with deformable plant models and a SAM 3 → YOLOv8 perception pipeline — and successfully transfers the policy to a real xArm6 + Bunker Pro robot to recover a continuous per-plant stiffness estimate.`,
+
+  /** Path to graphical abstract image under public/ — leave empty until ready */
+  graphicalAbstract: '' as string,
+
   abstract: `Early and accurate identification of plant diseases is critical for mitigating crop losses and ensuring sustainable agriculture. Robotics is changing this on a large scale — but one issue that makes agricultural robotics uniquely challenging is the variability and unstructured nature of real-world environments. Training a robot to push a maize stalk is a difficult task due to the high variability in plant biomechanical properties. To solve this, GRASP presents a framework for training plant manipulation (pushing) to estimate stiffness in a physics-based simulator — NVIDIA's Isaac Lab — using a camera's input. A reinforcement learning algorithm is trained in a simulated environment replicating the real-world field setting. As input, it takes an RGB-D image from a camera, a ground-truth segmented mask of the stalk, and controls the manipulator's torque to push the plant across multiple stiffness cases. Results demonstrate strong sim-to-real transfer performance across most conditions. The use of high-fidelity simulators can be replicated and extended to other manipulation-based agricultural applications.`,
 
   /** Set to a path under public/video/ when you add hero background video */

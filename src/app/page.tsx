@@ -71,90 +71,88 @@ export default function HomePage() {
         className={clsx(
           bgColor,
           textColor,
-          'relative flex h-screen items-center justify-center overflow-hidden'
+          'relative flex min-h-screen items-center justify-center overflow-hidden'
         )}
       >
-        <div className='layout relative z-20 flex min-h-screen flex-col items-center justify-center p-4 text-center'>
-          <h1 className='mb-4 mt-4 text-5xl'>
+        <div className='layout relative z-20 flex min-h-screen flex-col items-center justify-center px-4 pb-12 pt-16 text-center'>
+          {/* Title */}
+          <h1 className='mb-3 mt-4 text-5xl'>
             {siteContent.titleHighlights.map((part, i) => (
               <span key={i} className={part.highlight ? hlTextColor : undefined}>
                 {part.text}
               </span>
             ))}
           </h1>
-          <div className='container pb-2'>
-            <p className='text-sm text-gray-500'>M.S. Thesis &mdash; University of Nebraska&ndash;Lincoln, 2026</p>
+
+          {/* Venue tag */}
+          <p className='mb-5 text-sm text-gray-500'>
+            M.S. Thesis &mdash; University of Nebraska&ndash;Lincoln, 2026
+          </p>
+
+          {/* Authors */}
+          <div className='mb-3 text-lg'>
+            {siteContent.authors.map((author, i) => (
+              <React.Fragment key={author.name}>
+                {i > 0 && ', '}
+                {author.url ? (
+                  <UnderlineLink href={author.url}>{author.name}</UnderlineLink>
+                ) : (
+                  author.name
+                )}
+                {author.affiliations && (
+                  <sup className='ml-0.5 text-xs text-primary-600'>{author.affiliations}</sup>
+                )}
+              </React.Fragment>
+            ))}
           </div>
-          <div className='container pb-6'>
-            <span className='text-lg'>
-              {siteContent.authors.map((author, i) => (
-                <React.Fragment key={author.name}>
-                  {i > 0 && ', '}
-                  {author.url ? (
-                    <UnderlineLink href={author.url}>{author.name}</UnderlineLink>
-                  ) : (
-                    author.name
-                  )}
-                  {author.affiliations && (
-                    <span className='align-super text-sm'>{author.affiliations}</span>
-                  )}
-                </React.Fragment>
-              ))}
-            </span>
+
+          {/* Affiliations as text list */}
+          <div className='mb-6 flex flex-col items-center gap-1 text-xs text-gray-500'>
+            {siteContent.affiliations.map((aff) => (
+              <div key={aff.id} className='flex items-center gap-1.5'>
+                <sup className='text-primary-600'>{aff.id}</sup>
+                {aff.logo && (
+                  <img
+                    src={asset(aff.logo)}
+                    alt=''
+                    className='h-4 object-contain opacity-80'
+                    loading='lazy'
+                  />
+                )}
+                <span>{aff.label}</span>
+              </div>
+            ))}
           </div>
-          <div className='container flex flex-row items-center justify-center space-x-8 text-lg'>
+
+          {/* TL;DR */}
+          <div className='mb-6 max-w-2xl rounded-xl border border-primary-200 bg-primary-50/60 px-6 py-4 text-left text-sm leading-relaxed text-gray-700'>
+            <span className='font-bold text-primary-700'>TL;DR: </span>
+            {siteContent.tldr}
+          </div>
+
+          {/* Links */}
+          <div className='flex flex-row flex-wrap items-center justify-center gap-6'>
             <ArrowLink
-              className='mt-6'
               href={siteContent.links.arxiv}
               variant='light'
               size='large'
               icon={
-                <img
-                  src={asset('/svg/arxiv.svg')}
-                  alt='arXiv logo'
-                  className={linkIconClass}
-                  loading='lazy'
-                />
+                <img src={asset('/svg/arxiv.svg')} alt='arXiv' className={linkIconClass} loading='lazy' />
               }
             >
               arXiv Page
             </ArrowLink>
             <ArrowLink
-              className='mt-6'
               href={siteContent.links.github}
               variant='light'
               size='large'
               icon={
-                <img
-                  src={asset('/svg/github.svg')}
-                  alt='GitHub logo'
-                  className={linkIconClass}
-                  loading='lazy'
-                />
+                <img src={asset('/svg/github.svg')} alt='GitHub' className={linkIconClass} loading='lazy' />
               }
             >
               GitHub Repo
             </ArrowLink>
           </div>
-        </div>
-
-        {/* Affiliation logos bottom-left */}
-        <div className='absolute bottom-4 left-4 z-20 flex flex-col gap-2 text-left text-sm'>
-          {siteContent.affiliations.map((aff) => (
-            <div key={aff.id} className='flex items-center gap-2'>
-              <span className='align-super text-sm'>{aff.id}</span>
-              {aff.logo ? (
-                <img
-                  src={asset(aff.logo)}
-                  alt={aff.label}
-                  className='h-8 object-contain'
-                  loading='lazy'
-                />
-              ) : (
-                <span>{aff.label}</span>
-              )}
-            </div>
-          ))}
         </div>
 
         {siteContent.heroVideo ? (
@@ -169,6 +167,31 @@ export default function HomePage() {
         ) : (
           <div className='absolute inset-0 z-0 bg-gradient-to-br from-stone-500 via-stone-400 to-stone-600' />
         )}
+      </section>
+
+      {/* ── Graphical Abstract ───────────────────────────────────────────── */}
+      <section className={clsx(secondaryBgColor, textColor)}>
+        <div className='layout py-12'>
+          <h2 className='mb-6 text-center'>Graphical Abstract</h2>
+          {siteContent.graphicalAbstract ? (
+            <img
+              src={asset(siteContent.graphicalAbstract)}
+              alt='Graphical abstract'
+              className='mx-auto w-full max-w-4xl rounded-xl shadow-md'
+            />
+          ) : (
+            <div className='mx-auto flex max-w-4xl items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-white py-24 text-center text-sm text-gray-400'>
+              <div>
+                <p className='font-medium'>Graphical abstract coming soon</p>
+                <p className='mt-1 text-xs'>
+                  Add image to <code className='text-primary-500'>public/images/</code> and set{' '}
+                  <code className='text-primary-500'>graphicalAbstract</code> in{' '}
+                  <code className='text-primary-500'>site-content.ts</code>
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
       </section>
 
       {/* ── Abstract ─────────────────────────────────────────────────────── */}
