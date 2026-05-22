@@ -492,29 +492,24 @@ export default function HomePage() {
               ))}
             </div>
 
-            {/* Qualitative sim results */}
-            <h3 className='mb-3 text-xl font-semibold'>Simulation Environment</h3>
-            <p className='mb-10 text-sm leading-relaxed text-gray-500'>
-              The RL policy was trained with up to 5 parallel Isaac Lab environments, each
-              episode randomising stalk stiffness log-uniformly over [10⁷, 10⁸]&nbsp;Pa.
-            </p>
-
-            {/* Sim-to-real */}
-            <h3 className='mb-3 text-xl font-semibold'>Sim-to-Real Transfer</h3>
-            <p className='mb-10 text-sm leading-relaxed text-gray-500'>
-              The trained policy was deployed on the physical xArm6 + Bunker&nbsp;Pro platform
-              without any real-world fine-tuning. The perception pipeline (YOLOv8-seg + depth
-              unprojection) ran in real time, providing 3-D push targets to the IK controller
-              at 30&nbsp;Hz. Results showed successful stalk contact and lateral deflection
-              across most tested conditions.
-            </p>
-
-            {/* Placeholder for result plots */}
-            <div className='rounded-xl border-2 border-dashed border-gray-300 bg-white py-16 text-center text-sm text-gray-400'>
-              <p className='font-medium'>Result plots / videos coming soon</p>
-              <p className='mt-1 text-xs'>
-                Add learning curves, stiffness estimation plots, or demo videos here
-              </p>
+            {/* Result placeholders */}
+            <div className='grid gap-6 md:grid-cols-2'>
+              {[
+                'Training curves',
+                'Push-quality behavior',
+                'Stiffness recovery',
+                'Real plant setup',
+                'End-to-end results',
+                'Sim-to-real',
+              ].map((label) => (
+                <div
+                  key={label}
+                  className='flex aspect-[4/3] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-white px-6 text-center'
+                >
+                  <p className='font-medium text-gray-500'>{label}</p>
+                  <p className='mt-1 text-xs text-gray-300'>coming soon</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
