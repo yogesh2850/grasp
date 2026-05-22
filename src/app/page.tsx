@@ -137,7 +137,7 @@ export default function HomePage() {
 
             {/* Affiliations */}
             <div
-              className='mb-6 flex flex-col items-center gap-1.5 text-sm font-light text-white/75'
+              className='mb-6 flex flex-col items-center gap-1.5 text-base font-light text-white/75'
               style={{ fontFamily: 'Raleway, sans-serif' }}
             >
               {siteContent.affiliations.map((aff) => (
