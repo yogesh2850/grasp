@@ -298,7 +298,7 @@ export default function HomePage() {
               </p>
               <div className='grid gap-6 md:grid-cols-2'>
                 {/* SAM3 image comparisons */}
-                {siteContent.comparisons.slice(0, 2).map((cmp, i) => (
+                {siteContent.comparisons.slice(1, 2).map((cmp, i) => (
                   <div key={i}>
                     <ImageCompare
                       leftSrc={asset(cmp.leftSrc)} rightSrc={asset(cmp.rightSrc)}
@@ -367,8 +367,43 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                {siteContent.comparisons.slice(2, 4).map((cmp, i) => (
-                  <div key={i}>
+                {/* 2. Plant Mesh / Textured Render */}
+                {[siteContent.comparisons[2]].map((cmp) => (
+                  <div key={cmp.leftLabel}>
+                    <ImageCompare
+                      leftSrc={asset(cmp.leftSrc)} rightSrc={asset(cmp.rightSrc)}
+                      leftAlt={cmp.leftLabel}       rightAlt={cmp.rightLabel}
+                      initial={0.5}
+                      leftLabel={cmp.leftLabel}     rightLabel={cmp.rightLabel}
+                      className='aspect-[4/3] w-full' fit='contain'
+                      rightBg='#ffffff'
+                    />
+                    <p className='mt-2 text-center text-xs text-gray-400'>
+                      {cmp.leftLabel} / {cmp.rightLabel}
+                    </p>
+                  </div>
+                ))}
+
+                {/* 3. Raw RGB / Segmentation */}
+                {[siteContent.comparisons[0]].map((cmp) => (
+                  <div key={cmp.leftLabel}>
+                    <ImageCompare
+                      leftSrc={asset(cmp.leftSrc)} rightSrc={asset(cmp.rightSrc)}
+                      leftAlt={cmp.leftLabel}       rightAlt={cmp.rightLabel}
+                      initial={0.5}
+                      leftLabel={cmp.leftLabel}     rightLabel={cmp.rightLabel}
+                      className='aspect-[4/3] w-full' fit='contain'
+                      rightBg='#ffffff'
+                    />
+                    <p className='mt-2 text-center text-xs text-gray-400'>
+                      {cmp.leftLabel} / {cmp.rightLabel}
+                    </p>
+                  </div>
+                ))}
+
+                {/* 4. Scene Layout / Scene Variant */}
+                {[siteContent.comparisons[3]].map((cmp) => (
+                  <div key={cmp.leftLabel}>
                     <ImageCompare
                       leftSrc={asset(cmp.leftSrc)} rightSrc={asset(cmp.rightSrc)}
                       leftAlt={cmp.leftLabel}       rightAlt={cmp.rightLabel}
