@@ -408,7 +408,7 @@ export default function HomePage() {
             </div>
 
             {/* ── 3. Isaac Lab Setup ── */}
-            <div className='mb-6'>
+            <div className='mb-14'>
               <h3 className='mb-1 text-2xl font-semibold'>Isaac Lab Setup</h3>
               <p className='mb-6 text-sm leading-relaxed text-gray-500'>
                 Deformable maize plant models with FEM physics are placed in GPU-parallel Isaac Lab
@@ -430,6 +430,14 @@ export default function HomePage() {
                     </p>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* ── 4. Isaac Lab Training ── */}
+            <div className='mb-6'>
+              <h3 className='mb-1 text-2xl font-semibold'>Isaac Lab Training</h3>
+              <div className='mt-6 rounded-xl border-2 border-dashed border-gray-200 bg-gray-50 py-14 text-center text-sm text-gray-400'>
+                <p className='font-medium'>Content coming soon</p>
               </div>
             </div>
 
@@ -464,22 +472,10 @@ export default function HomePage() {
 
             {/* Qualitative sim results */}
             <h3 className='mb-3 text-xl font-semibold'>Simulation Environment</h3>
-            <p className='mb-6 text-sm leading-relaxed text-gray-500'>
+            <p className='mb-10 text-sm leading-relaxed text-gray-500'>
               The RL policy was trained with up to 5 parallel Isaac Lab environments, each
               episode randomising stalk stiffness log-uniformly over [10⁷, 10⁸]&nbsp;Pa.
-              Below are representative scenes from the training environment.
             </p>
-            <div className='mb-12 grid gap-4 md:grid-cols-2'>
-              {[
-                { src: '/images/thesis/simulation/scene_layout.png',   label: 'Training scene — layout A' },
-                { src: '/images/thesis/simulation/scene_layout_2.png', label: 'Training scene — layout B' },
-              ].map((img) => (
-                <div key={img.label} className='overflow-hidden rounded-xl border border-gray-200 bg-white'>
-                  <img src={asset(img.src)} alt={img.label} className='w-full object-cover' loading='lazy' />
-                  <p className='px-3 py-2 text-center text-xs text-gray-500'>{img.label}</p>
-                </div>
-              ))}
-            </div>
 
             {/* Sim-to-real */}
             <h3 className='mb-3 text-xl font-semibold'>Sim-to-Real Transfer</h3>
