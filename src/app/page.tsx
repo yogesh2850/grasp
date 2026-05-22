@@ -518,40 +518,29 @@ export default function HomePage() {
         {/* ── Q & A ────────────────────────────────────────────────────── */}
         <section id='qa' className={clsx(bgColor, textColor)}>
           <div className='layout py-12'>
-            <h2 className='mb-10'>Q &amp; A</h2>
-            <div className='mx-auto max-w-3xl divide-y divide-gray-100'>
-              {[
-                {
-                  q: 'Why simulate plants instead of just collecting real push data?',
-                  a: 'Real-field data collection doesn\'t scale. Stiffness varies by more than an order of magnitude from plant to plant and week to week — capturing that range means walking every row with a sensor, running trials on plants that can\'t be reused, and still ending up with data too narrow to cover edge cases. Simulation lets us randomize stiffness over the full biological range in every episode, run thousands of parallel pushes overnight, and never harm a plant.',
-                },
-                {
-                  q: 'Isn\'t measuring stiffness just measuring force?',
-                  a: 'Force alone tells you how hard you pushed, not how stiff the plant is. Stiffness is the slope of the force–deflection curve: resistance per unit of bending. Push at the wrong angle, miss the right height, or move too fast — and the slope you measure doesn\'t reflect the true material property. That\'s why GRASP rewards push quality — a clean, perpendicular contact at the right stalk height — not just contact.',
-                },
-                {
-                  q: 'How do you use ground-truth stiffness without cheating?',
-                  a: 'The ground truth never reaches the policy. During training, a privileged critic grades every push using the simulator\'s finite-element state — true deflection, true stiffness, true contact force — and these signals shape the reward. The policy itself only ever sees what a real robot has: a camera image, a stalk mask, and proprioception. When we deploy, the critic is gone; the policy runs on sensor data alone. The ground truth is a teacher, not a crutch.',
-                },
-                {
-                  q: 'What can\'t GRASP do yet?',
-                  a: 'Quite a bit. GRASP currently handles one stalk at a time; row-level throughput still requires a person to drive the platform. The policy is a Phase-1 teacher — we haven\'t distilled it into a student that drops privileged observations entirely. At the highest stiffness values tested, success rates drop; the policy hasn\'t fully learned to push hard enough without losing control. These are the open problems ahead.',
-                },
-              ].map(({ q, a }) => (
-                <details key={q} className='group py-6'>
-                  <summary className='flex cursor-pointer list-none items-start justify-between gap-4'>
-                    <span className='text-base font-semibold text-gray-800 group-open:text-primary-600'>
-                      {q}
-                    </span>
-                    <span className='mt-0.5 shrink-0 text-gray-400 transition-transform duration-200 group-open:rotate-45'>
-                      <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'>
-                        <line x1='12' y1='5' x2='12' y2='19'/><line x1='5' y1='12' x2='19' y2='12'/>
-                      </svg>
-                    </span>
-                  </summary>
-                  <p className='mt-4 text-sm leading-relaxed text-gray-500'>{a}</p>
-                </details>
-              ))}
+            <h2 className='mb-8 text-center'>🌽 Questions and Answers</h2>
+            <div className='mx-auto max-w-3xl' style={{ marginTop: '2rem' }}>
+
+              <p><strong>Q: 🌾 Why simulate plants instead of just collecting real push data?</strong></p>
+              <p style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }} className='text-sm leading-relaxed text-gray-600'>
+                Real-field data collection doesn't scale. Stiffness varies by more than an order of magnitude from plant to plant and week to week — capturing that range means walking every row with a sensor, running trials on plants that can't be reused, and still ending up with data too narrow to cover edge cases. Simulation lets us randomize stiffness over the full biological range in every episode, run thousands of parallel pushes overnight, and never harm a plant.
+              </p>
+
+              <p><strong>Q: 📏 Isn't measuring stiffness just measuring force?</strong></p>
+              <p style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }} className='text-sm leading-relaxed text-gray-600'>
+                Force alone tells you how hard you pushed, not how stiff the plant is. Stiffness is the slope of the force–deflection curve: resistance per unit of bending. Push at the wrong angle, miss the right height, or move too fast — and the slope you measure doesn't reflect the true material property. That's why GRASP rewards push quality — a clean, perpendicular contact at the right stalk height — not just contact.
+              </p>
+
+              <p><strong>Q: 🎓 How do you use ground-truth stiffness without cheating?</strong></p>
+              <p style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }} className='text-sm leading-relaxed text-gray-600'>
+                The ground truth never reaches the policy. During training, a privileged critic grades every push using the simulator's finite-element state — true deflection, true stiffness, true contact force — and these signals shape the reward. The policy itself only ever sees what a real robot has: a camera image, a stalk mask, and proprioception. When we deploy, the critic is gone; the policy runs on sensor data alone. The ground truth is a teacher, not a crutch.
+              </p>
+
+              <p><strong>Q: 🔧 What can't GRASP do yet?</strong></p>
+              <p style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }} className='text-sm leading-relaxed text-gray-600'>
+                Quite a bit. GRASP currently handles one stalk at a time; row-level throughput still requires a person to drive the platform. The policy is a Phase-1 teacher — we haven't distilled it into a student that drops privileged observations entirely. At the highest stiffness values tested, success rates drop; the policy hasn't fully learned to push hard enough without losing control. These are the open problems ahead.
+              </p>
+
             </div>
           </div>
         </section>
