@@ -323,6 +323,7 @@ export default function HomePage() {
                     initial={0.5}
                     leftLabel='3D Point Cloud'
                     className='aspect-[4/3] w-full' fit='contain'
+                    rightBg='#ffffff'
                   />
                   <p className='mt-2 text-center text-xs text-gray-400'>3D Point Cloud</p>
                 </div>
@@ -360,6 +361,7 @@ export default function HomePage() {
                       initial={0.5}
                       leftLabel={cmp.leftLabel}     rightLabel={cmp.rightLabel}
                       className='aspect-[4/3] w-full' fit='contain'
+                      rightBg='#ffffff'
                     />
                     <p className='mt-2 text-center text-xs text-gray-400'>
                       {cmp.leftLabel} / {cmp.rightLabel}

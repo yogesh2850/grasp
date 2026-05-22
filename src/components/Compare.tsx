@@ -14,6 +14,7 @@ type Props = {
   className?: string;         // you can pass "aspect-[4/3]" here
   fit?: 'cover' | 'contain';  // how to place images inside the frame
   objectPosition?: string;    // e.g. 'center', 'left top'
+  rightBg?: string;           // background behind right panel (blocks left bleed-through)
 };
 
 export default function ImageCompare({
@@ -27,6 +28,7 @@ export default function ImageCompare({
   className = '',
   fit = 'cover',
   objectPosition = 'center',
+  rightBg,
 }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [t, setT] = useState<number>(clamp01(initial));
@@ -102,6 +104,14 @@ export default function ImageCompare({
         className={`absolute inset-0 w-full h-full ${fitClass} ${posClass} pointer-events-none select-none`}
         draggable={false}
       />
+
+      {/* Solid background behind right panel — blocks left image bleed-through with contain fit */}
+      {rightBg && (
+        <div
+          className='absolute inset-0 pointer-events-none'
+          style={{ background: rightBg, clipPath: clip, WebkitClipPath: clip as any }}
+        />
+      )}
 
       {/* Visible overlay (right) image — absolute + clipped */}
       <img
