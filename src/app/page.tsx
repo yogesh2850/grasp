@@ -250,15 +250,20 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Graphical Abstract ────────────────────────────────────────── */}
-        <section className={clsx(secondaryBgColor, textColor)}>
+        {/* ── Abstract (with graphical abstract image above text) ───────── */}
+        <section id='abstract' className={clsx(bgColor, textColor)}>
           <div className='layout py-12'>
-            <h2 className='mb-6 text-center'>Graphical Abstract</h2>
+            <h2 className='pb-6 text-center'>Abstract</h2>
+
+            {/* Graphical abstract image */}
             {siteContent.graphicalAbstract ? (
-              <img src={asset(siteContent.graphicalAbstract)} alt='Graphical abstract'
-                className='mx-auto w-full max-w-4xl rounded-xl shadow-md' />
+              <img
+                src={asset(siteContent.graphicalAbstract)}
+                alt='Graphical abstract'
+                className='mx-auto mb-8 w-full max-w-4xl rounded-xl shadow-md'
+              />
             ) : (
-              <div className='mx-auto flex max-w-4xl items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-white py-24 text-center text-sm text-gray-400'>
+              <div className='mx-auto mb-8 flex max-w-4xl items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 py-20 text-center text-sm text-gray-400'>
                 <div>
                   <p className='font-medium'>Graphical abstract coming soon</p>
                   <p className='mt-1 text-xs'>
@@ -268,13 +273,7 @@ export default function HomePage() {
                 </div>
               </div>
             )}
-          </div>
-        </section>
 
-        {/* ── Abstract ─────────────────────────────────────────────────── */}
-        <section id='abstract' className={clsx(bgColor, textColor)}>
-          <div className='layout py-12'>
-            <h2 className='pb-4 text-center'>Abstract</h2>
             <p className='text-pretty'>{siteContent.abstract}</p>
           </div>
         </section>
