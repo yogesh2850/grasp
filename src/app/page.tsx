@@ -441,8 +441,21 @@ export default function HomePage() {
             {/* ── 4. Isaac Lab Training ── */}
             <div className='mb-6'>
               <h3 className='mb-1 text-2xl font-semibold'>Isaac Lab Training</h3>
-              <div className='mt-6 rounded-xl border-2 border-dashed border-gray-200 bg-gray-50 py-14 text-center text-sm text-gray-400'>
-                <p className='font-medium'>Content coming soon</p>
+              <div className='mt-6 grid gap-6 md:grid-cols-2'>
+                {[
+                  'Reward composition / staged reward diagram',
+                  'Privileged-information flow diagram',
+                  'Observation → policy → action → IK control diagram',
+                  'Force–deflection linearity concept',
+                ].map((label) => (
+                  <div
+                    key={label}
+                    className='flex aspect-[4/3] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-200 bg-gray-50 px-6 text-center text-sm text-gray-400'
+                  >
+                    <p className='font-medium text-gray-500'>{label}</p>
+                    <p className='mt-1 text-xs text-gray-300'>diagram coming soon</p>
+                  </div>
+                ))}
               </div>
             </div>
 
