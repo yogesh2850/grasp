@@ -415,24 +415,13 @@ export default function HomePage() {
 
             {/* Sim-to-real */}
             <h3 className='mb-3 text-xl font-semibold'>Sim-to-Real Transfer</h3>
-            <p className='mb-6 text-sm leading-relaxed text-gray-500'>
+            <p className='mb-10 text-sm leading-relaxed text-gray-500'>
               The trained policy was deployed on the physical xArm6 + Bunker&nbsp;Pro platform
               without any real-world fine-tuning. The perception pipeline (YOLOv8-seg + depth
               unprojection) ran in real time, providing 3-D push targets to the IK controller
               at 30&nbsp;Hz. Results showed successful stalk contact and lateral deflection
               across most tested conditions.
             </p>
-            <div className='mb-12 grid gap-4 md:grid-cols-2'>
-              {[
-                { src: '/images/thesis/hardware/hardware.png', label: 'Physical platform in lab' },
-                { src: '/images/thesis/rl/rl_training_pipeline.png', label: 'RL training pipeline' },
-              ].map((img) => (
-                <div key={img.label} className='overflow-hidden rounded-xl border border-gray-200 bg-white'>
-                  <img src={asset(img.src)} alt={img.label} className='w-full object-cover' loading='lazy' />
-                  <p className='px-3 py-2 text-center text-xs text-gray-500'>{img.label}</p>
-                </div>
-              ))}
-            </div>
 
             {/* Placeholder for result plots */}
             <div className='rounded-xl border-2 border-dashed border-gray-300 bg-white py-16 text-center text-sm text-gray-400'>
