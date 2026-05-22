@@ -376,7 +376,7 @@ export default function HomePage() {
                     rightSrc={asset('/images/blank.svg')}
                     leftAlt='3D Point Cloud'
                     rightAlt=''
-                    initial={0.9}
+                    initial={0.5}
                     leftLabel='3D Point Cloud'
                     className='aspect-[4/3] w-full' fit='contain'
                   />
