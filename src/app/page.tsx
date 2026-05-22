@@ -47,7 +47,7 @@ function StickyNav() {
       className={clsx(
         'fixed top-0 z-50 w-full transition-all duration-300',
         scrolled
-          ? 'bg-white/90 shadow-sm backdrop-blur-md'
+          ? 'bg-gray-900/90 shadow-sm backdrop-blur-md'
           : 'bg-transparent'
       )}
     >
@@ -61,10 +61,8 @@ function StickyNav() {
               className={clsx(
                 'whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium transition-colors',
                 active === id
-                  ? 'bg-primary-600 text-white'
-                  : scrolled
-                    ? 'text-gray-600 hover:bg-gray-100'
-                    : 'text-gray-700 hover:bg-white/30'
+                  ? 'bg-white text-gray-900'
+                  : 'text-white hover:bg-white/20'
               )}
             >
               {label}
