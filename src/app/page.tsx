@@ -192,12 +192,27 @@ export default function HomePage() {
             </div>
           </div>
 
-          {siteContent.heroVideo ? (
-            <video autoPlay loop muted className='absolute inset-0 z-0 h-full w-full object-cover object-top'>
+          {/* Base gradient always present */}
+          <div className='absolute inset-0 z-0 bg-gradient-to-br from-stone-500 via-stone-400 to-stone-600' />
+
+          {/* GIF background at 40% opacity, on top of gradient */}
+          {siteContent.heroGif && (
+            <img
+              src={asset(siteContent.heroGif)}
+              alt=''
+              aria-hidden='true'
+              className='absolute inset-0 z-[1] h-full w-full object-cover object-center'
+              style={{ opacity: 0.4 }}
+            />
+          )}
+
+          {/* MP4 video overrides everything if set */}
+          {siteContent.heroVideo && (
+            <video autoPlay loop muted
+              className='absolute inset-0 z-[2] h-full w-full object-cover object-top'
+              style={{ opacity: 0.4 }}>
               <source src={asset(siteContent.heroVideo)} type='video/mp4' />
             </video>
-          ) : (
-            <div className='absolute inset-0 z-0 bg-gradient-to-br from-stone-500 via-stone-400 to-stone-600' />
           )}
         </section>
 

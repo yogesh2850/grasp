@@ -48,6 +48,9 @@ export const siteContent = {
   /** Set to a path under public/video/ when you add hero background video */
   heroVideo: '' as string,
 
+  /** Animated GIF shown as hero background at reduced opacity */
+  heroGif: '/video/hero.gif' as string,
+
   slider: [
     { title: 'Motivation', video: '' },
     { title: 'Results', video: '' },
