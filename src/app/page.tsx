@@ -13,12 +13,11 @@ import { asset } from '@/lib/asset';
 
 /* ─── Nav ───────────────────────────────────────────────────────────────── */
 const NAV_LINKS = [
-  { label: 'Abstract',            href: '#abstract' },
-  { label: 'Overview',            href: '#overview' },
-  { label: 'Perception Pipeline', href: '#perception' },
-  { label: 'Methods',             href: '#methods' },
-  { label: 'Results',             href: '#results' },
-  { label: 'Citation',            href: '#citation' },
+  { label: 'Abstract',    href: '#abstract'     },
+  { label: 'Overview',    href: '#overview'     },
+  { label: 'Methodology', href: '#methodology'  },
+  { label: 'Results',     href: '#results'      },
+  { label: 'Citation',    href: '#citation'     },
 ];
 
 function StickyNav() {
@@ -111,9 +110,7 @@ export default function HomePage() {
     content: <VideoBlock src={item.video} />,
   }));
 
-  const sliderRef                        = useRef<HTMLDivElement | null>(null);
-  const [perceptIdx, setPerceptIdx]      = useState(0);
-  const perceptTotal                     = siteContent.comparisons.length;
+  const sliderRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const slider = sliderRef.current;
@@ -325,77 +322,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Perception Pipeline ──────────────────────────────────────── */}
-        <section id='perception' className={clsx(secondaryBgColor, textColor)}>
-          <div className='layout pb-4 pt-12'>
-            <h2 className='mb-2'>Perception Pipeline</h2>
-            <p className='mb-6 text-sm text-gray-500'>
-              SAM&nbsp;3 zero-shot annotations are distilled into a real-time YOLOv8-seg model.
-              Drag the slider to compare raw inputs and segmentation outputs.
-            </p>
-
-            {/* Tab pills */}
-            <div className='mb-4 flex flex-wrap gap-2'>
-              {siteContent.comparisons.map((cmp, i) => (
-                <button key={i} onClick={() => setPerceptIdx(i)}
-                  className={clsx(
-                    'rounded-full px-4 py-1.5 text-sm font-medium transition-colors',
-                    i === perceptIdx
-                      ? 'bg-primary-600 text-white shadow'
-                      : 'bg-white text-gray-500 ring-1 ring-gray-200 hover:bg-gray-50'
-                  )}>
-                  {cmp.leftLabel} / {cmp.rightLabel}
-                </button>
-              ))}
-            </div>
-
-            {/* Big compare panel */}
-            <div className='relative'>
-              {siteContent.comparisons.map((cmp, i) => (
-                <div key={i} className={i === perceptIdx ? 'block' : 'hidden'}>
-                  <ImageCompare
-                    leftSrc={asset(cmp.leftSrc)} rightSrc={asset(cmp.rightSrc)}
-                    leftAlt={cmp.leftLabel}      rightAlt={cmp.rightLabel}
-                    initial={0.5}
-                    leftLabel={cmp.leftLabel}    rightLabel={cmp.rightLabel}
-                    className='aspect-[16/7] w-full' fit='contain'
-                  />
-                </div>
-              ))}
-              <button onClick={() => setPerceptIdx((perceptIdx - 1 + perceptTotal) % perceptTotal)}
-                aria-label='Previous'
-                className='absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white backdrop-blur hover:bg-black/60'>
-                <svg className='h-5 w-5' fill='none' stroke='currentColor' strokeWidth={2.5} viewBox='0 0 24 24'>
-                  <path strokeLinecap='round' strokeLinejoin='round' d='M15 19l-7-7 7-7' />
-                </svg>
-              </button>
-              <button onClick={() => setPerceptIdx((perceptIdx + 1) % perceptTotal)}
-                aria-label='Next'
-                className='absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white backdrop-blur hover:bg-black/60'>
-                <svg className='h-5 w-5' fill='none' stroke='currentColor' strokeWidth={2.5} viewBox='0 0 24 24'>
-                  <path strokeLinecap='round' strokeLinejoin='round' d='M9 5l7 7-7 7' />
-                </svg>
-              </button>
-            </div>
-
-            {/* Dots */}
-            <div className='mt-4 flex justify-center gap-2 pb-12'>
-              {siteContent.comparisons.map((_, i) => (
-                <button key={i} onClick={() => setPerceptIdx(i)} aria-label={`Slide ${i + 1}`}
-                  className={clsx('h-2 rounded-full transition-all',
-                    i === perceptIdx ? 'w-6 bg-primary-600' : 'w-2 bg-gray-300 hover:bg-gray-400')} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── Methods ──────────────────────────────────────────────────── */}
-        <section id='methods' className={clsx(bgColor, textColor)}>
+        {/* ── Methodology ──────────────────────────────────────────────── */}
+        <section id='methodology' className={clsx(bgColor, textColor)}>
           <div className='layout py-12'>
-            <h2 className='pb-4'>Methods</h2>
+            <h2 className='mb-10 pb-2 border-b border-gray-200'>Methodology</h2>
 
-            <div className='mb-12'>
-              <h3 className='mb-3 text-xl font-semibold'>Hardware Platform</h3>
+            {/* ── 1. Hardware ── */}
+            <div className='mb-14'>
+              <h3 className='mb-1 text-2xl font-semibold'>Hardware</h3>
               <p className='mb-6 text-sm leading-relaxed text-gray-500'>
                 The GRASP robot is a UFactory xArm6 (6-DOF, 5&nbsp;kg payload, ±0.1&nbsp;mm
                 repeatability) mounted on an AgileX Bunker&nbsp;Pro tracked mobile base. A
@@ -416,21 +350,57 @@ export default function HomePage() {
               </div>
             </div>
 
-            {siteContent.figures.map((fig) => (
-              <React.Fragment key={fig.idx}>
-                <Figure img_src={asset(fig.src)} caption={fig.caption} isDark={false} idx={fig.idx} />
-                <div className='pb-16' />
-              </React.Fragment>
-            ))}
+            {/* ── 2. Perception Pipeline ── */}
+            <div className='mb-14'>
+              <h3 className='mb-1 text-2xl font-semibold'>Perception Pipeline</h3>
+              <p className='mb-6 text-sm leading-relaxed text-gray-500'>
+                SAM&nbsp;3 zero-shot annotations are distilled into a real-time YOLOv8-seg model
+                running at 30&nbsp;Hz. Drag each slider to compare input and output.
+              </p>
+              <div className='grid gap-6 md:grid-cols-2'>
+                {siteContent.comparisons.slice(0, 2).map((cmp, i) => (
+                  <div key={i}>
+                    <ImageCompare
+                      leftSrc={asset(cmp.leftSrc)} rightSrc={asset(cmp.rightSrc)}
+                      leftAlt={cmp.leftLabel}       rightAlt={cmp.rightLabel}
+                      initial={0.5}
+                      leftLabel={cmp.leftLabel}     rightLabel={cmp.rightLabel}
+                      className='aspect-[4/3] w-full' fit='contain'
+                    />
+                    <p className='mt-2 text-center text-xs text-gray-400'>
+                      {cmp.leftLabel} / {cmp.rightLabel}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            <h3 className='mb-4 text-xl font-semibold'>Contributions</h3>
-            <ol className='ml-6 list-decimal space-y-3 text-sm leading-relaxed text-gray-600'>
-              <li>A <strong>deformable plant-interaction simulation</strong> environment in NVIDIA Isaac Lab with FEM-based maize plant physics and per-episode stiffness randomisation over [10⁷, 10⁸]&nbsp;Pa.</li>
-              <li>A <strong>reinforcement-learning formulation</strong> decomposed into four phases — navigation, visual alignment, push quality, and stiffness estimation — with rewards tied to Euler–Bernoulli beam theory.</li>
-              <li>A <strong>zero-shot-to-real-time perception pipeline</strong> using SAM&nbsp;3 for automated annotation of ~1,500 field images, distilled into a YOLOv8-seg model running at 30&nbsp;Hz.</li>
-              <li>A <strong>calibrated camera-to-arm pipeline</strong> with CATIA-measured extrinsics, stereo-baseline correction, and depth-based 3-D push-point extraction.</li>
-              <li>An <strong>agronomically grounded robotic phenotyping instrument</strong> that converts force–deflection measurements into a continuous stalk stiffness estimate.</li>
-            </ol>
+            {/* ── 3. Isaac Lab Setup ── */}
+            <div className='mb-6'>
+              <h3 className='mb-1 text-2xl font-semibold'>Isaac Lab Setup</h3>
+              <p className='mb-6 text-sm leading-relaxed text-gray-500'>
+                Deformable maize plant models with FEM physics are placed in GPU-parallel Isaac Lab
+                environments. Stalk stiffness is randomised log-uniformly over [10⁷, 10⁸]&nbsp;Pa
+                each episode.
+              </p>
+              <div className='grid gap-6 md:grid-cols-2'>
+                {siteContent.comparisons.slice(2, 4).map((cmp, i) => (
+                  <div key={i}>
+                    <ImageCompare
+                      leftSrc={asset(cmp.leftSrc)} rightSrc={asset(cmp.rightSrc)}
+                      leftAlt={cmp.leftLabel}       rightAlt={cmp.rightLabel}
+                      initial={0.5}
+                      leftLabel={cmp.leftLabel}     rightLabel={cmp.rightLabel}
+                      className='aspect-[4/3] w-full' fit='contain'
+                    />
+                    <p className='mt-2 text-center text-xs text-gray-400'>
+                      {cmp.leftLabel} / {cmp.rightLabel}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </section>
 
