@@ -195,16 +195,25 @@ export default function HomePage() {
               {siteContent.tldr}
             </div>
 
-            {/* Links */}
-            <div className='flex flex-row flex-wrap items-center justify-center gap-6'>
-              <ArrowLink href={siteContent.links.arxiv} variant='light' size='large'
-                icon={<img src={asset('/svg/arxiv.svg')} alt='arXiv' className={linkIconClass} loading='lazy' />}>
-                arXiv Page
-              </ArrowLink>
-              <ArrowLink href={siteContent.links.github} variant='light' size='large'
-                icon={<img src={asset('/svg/github.svg')} alt='GitHub' className={linkIconClass} loading='lazy' />}>
-                GitHub Repo
-              </ArrowLink>
+            {/* Links — white pill buttons */}
+            <div className='flex flex-row flex-wrap items-center justify-center gap-3'>
+              {[
+                { href: siteContent.links.arxiv,   icon: '/svg/arxiv.svg',   label: 'arXiv Page',   alt: 'arXiv'   },
+                { href: siteContent.links.github,  icon: '/svg/github.svg',  label: 'GitHub Repo',  alt: 'GitHub'  },
+                { href: siteContent.links.dataset, icon: '/svg/dataset.svg', label: 'Dataset',      alt: 'Dataset' },
+              ].map(({ href, icon, label, alt }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='flex items-center gap-2 rounded-full border border-white/60 bg-white/10 px-5 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/25 hover:border-white'
+                  style={{ fontFamily: 'Raleway, sans-serif' }}
+                >
+                  <img src={asset(icon)} alt={alt} className='h-5 w-5 brightness-0 invert' loading='lazy' />
+                  {label}
+                </a>
+              ))}
             </div>
           </div>
 
