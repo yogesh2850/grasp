@@ -85,7 +85,7 @@ export const siteContent = {
     },
   ],
 
-  figures: [],
+  figures: [] as { src: string; caption: string; idx: number }[],
 
   citation: `@mastersthesis{chawla2026grasp,
   title   = {GRASP: Generalizable Robotic Adaptation for Sim-to-Real Plant Interaction},
