@@ -26,10 +26,10 @@ export const siteContent = {
 
   affiliations: [
     { id: '1', label: 'Biological Systems Engineering, University of Nebraska–Lincoln', logo: '/images/unl_logo.png' },
-    { id: '2', label: 'University of Nevada, Reno', logo: '' },
-    { id: '3', label: 'Iowa State University', logo: '' },
-    { id: '4', label: 'Osnabrück University of Applied Sciences', logo: '' },
-    { id: '5', label: 'Robotics and Autonomous Systems, Arizona State University', logo: '' },
+    { id: '2', label: 'University of Nevada, Reno',                                    logo: '/images/unr.png' },
+    { id: '3', label: 'Iowa State University',                                          logo: '/images/isu.png' },
+    { id: '4', label: 'Osnabrück University of Applied Sciences',                      logo: '/images/osnabruck.png' },
+    { id: '5', label: 'Robotics and Autonomous Systems, Arizona State University',     logo: '/images/asu.png' },
   ],
 
   links: {
