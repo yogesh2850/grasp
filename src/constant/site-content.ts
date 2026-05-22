@@ -18,7 +18,7 @@ export const siteContent = {
     { name: 'Yogesh Chawla',      url: 'http://yogesh-chawla.com/',                                              affiliations: '1' },
     { name: 'Nitesh Subedi',      url: 'https://scholar.google.com/citations?user=pSmoZbgAAAAJ&hl=en',           affiliations: '3' },
     { name: 'Nils Hoppe',         url: '',                                                                        affiliations: '4' },
-    { name: 'Mridula Buragohain', url: 'https://www.linkedin.com/in/mridula-buragohain-9b1228221/',              affiliations: '5' },
+    { name: 'Mridula Buragohain', url: 'https://mridulaburagohain.github.io/',                                   affiliations: '5' },
     { name: 'Krishna Muvva',      url: 'https://krishnamuvva.com/',                                              affiliations: '2' },
     { name: 'Soumik Sarkar',      url: 'https://www.engineering.iastate.edu/people/profile/soumiks/',            affiliations: '3' },
     { name: 'Santosh Pitla',      url: 'https://bse.unl.edu/person/santosh-pitla/',                              affiliations: '1' },
