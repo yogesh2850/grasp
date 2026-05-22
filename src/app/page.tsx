@@ -336,17 +336,13 @@ export default function HomePage() {
                 ZED&nbsp;X stereo camera provides RGB-D perception; a gripper-mounted depth
                 camera provides close-range feedback for contact control.
               </p>
-              <div className='grid gap-4 md:grid-cols-3'>
-                {[
-                  { src: '/images/thesis/hardware/xarm6.png',   label: 'UFactory xArm6' },
-                  { src: '/images/thesis/hardware/hardware.png', label: 'Full Platform' },
-                  { src: '/images/thesis/hardware/zed.jpg',      label: 'ZED X Camera' },
-                ].map((img) => (
-                  <div key={img.label} className='overflow-hidden rounded-xl border border-gray-200'>
-                    <img src={asset(img.src)} alt={img.label} className='w-full object-cover' loading='lazy' />
-                    <p className='px-3 py-2 text-center text-xs text-gray-500'>{img.label}</p>
-                  </div>
-                ))}
+              <div className='mx-auto max-w-2xl overflow-hidden rounded-xl border border-gray-200'>
+                <img
+                  src={asset('/images/thesis/hardware/hardware_complete.png')}
+                  alt='GRASP hardware platform'
+                  className='w-full object-contain'
+                  loading='lazy'
+                />
               </div>
             </div>
 
