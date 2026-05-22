@@ -74,30 +74,6 @@ function StickyNav() {
   );
 }
 
-/* ─── Video helpers ──────────────────────────────────────────────────────── */
-function PlaceholderVideo({ label }: { label: string }) {
-  return (
-    <div className='flex aspect-video w-full items-center justify-center rounded-md border border-dashed border-white/30 bg-gray-800/80 px-6 text-center text-sm text-gray-300'>
-      {label}
-      <br />
-      <span className='mt-2 text-xs text-gray-500'>
-        Add MP4 under <code className='text-primary-400'>public/video/</code> and set path in{' '}
-        <code className='text-primary-400'>src/constant/site-content.ts</code>
-      </span>
-    </div>
-  );
-}
-
-function VideoBlock({ src }: { src: string }) {
-  if (!src) return <PlaceholderVideo label='Video placeholder — path not set yet' />;
-  return (
-    <video autoPlay muted controls loop className='mx-auto w-full rounded-md shadow-sm'>
-      <source src={asset(src)} type='video/mp4' />
-      Your browser does not support the video tag.
-    </video>
-  );
-}
-
 /* ─── Page ───────────────────────────────────────────────────────────────── */
 export default function HomePage() {
   const textColor        = 'text-gray-600';
@@ -105,21 +81,6 @@ export default function HomePage() {
   const secondaryBgColor = 'bg-gray-100';
   const hlTextColor      = 'text-primary-600';
   const linkIconClass    = 'h-6 w-6 shrink-0';
-
-  const sliderItems = siteContent.slider.map((item) => ({
-    title:   item.title,
-    content: <VideoBlock src={item.video} />,
-  }));
-
-  const sliderRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-    const mid = slider.children[1] as HTMLElement | undefined;
-    if (!mid) return;
-    slider.scrollLeft = mid.offsetLeft - (slider.clientWidth - mid.clientWidth) / 2;
-  }, []);
 
   return (
     <>
@@ -299,23 +260,6 @@ export default function HomePage() {
                   <h3 className='mb-2 text-lg font-semibold text-primary-400'>{title}</h3>
                   <p className='text-sm leading-relaxed text-gray-300'>{body}</p>
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── Video slider ─────────────────────────────────────────────── */}
-        <section className={clsx(bgColor, textColor, 'py-8')}>
-          <div className='relative'>
-            <div ref={sliderRef}
-              className='flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-48 pb-2'
-              aria-label='Project highlights slider'>
-              {sliderItems.map((item) => (
-                <article key={item.title}
-                  className='w-[85%] flex-none snap-center rounded-2xl border border-gray-200 bg-gray-50 p-6 shadow-sm md:w-[70%] lg:w-[55%]'>
-                  <h3 className='mb-4 text-2xl font-semibold text-gray-700'>{item.title}</h3>
-                  {item.content}
-                </article>
               ))}
             </div>
           </div>
