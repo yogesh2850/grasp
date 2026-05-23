@@ -155,9 +155,10 @@ export default function HomePage() {
             {/* Links — white pill buttons */}
             <div className='flex flex-row flex-wrap items-center justify-center gap-3'>
               {[
-                { href: siteContent.links.arxiv,   icon: '/svg/arxiv.svg',   label: 'arXiv Page',   alt: 'arXiv'   },
-                { href: siteContent.links.github,  icon: '/svg/github.svg',  label: 'GitHub Repo',  alt: 'GitHub'  },
-                { href: siteContent.links.dataset, icon: '/svg/dataset.svg', label: 'Dataset',      alt: 'Dataset' },
+                { href: siteContent.links.arxiv,    icon: '/svg/arxiv.svg',    label: 'arXiv Page',           alt: 'arXiv'    },
+                { href: siteContent.links.github,   icon: '/svg/github.svg',   label: 'GitHub Repo',          alt: 'GitHub'   },
+                { href: siteContent.links.dataset,  icon: '/svg/dataset.svg',  label: 'Dataset',              alt: 'Dataset'  },
+                { href: siteContent.links.assembly, icon: '/svg/assembly.svg', label: 'Assembly Instructions', alt: 'Assembly' },
               ].map(({ href, icon, label, alt }) => (
                 <a
                   key={label}
