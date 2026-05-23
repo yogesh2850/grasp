@@ -250,15 +250,24 @@ export default function HomePage() {
               <h2 className='mb-8 text-center'>Key Contributions</h2>
               <ul className='space-y-5 text-sm leading-relaxed text-gray-600'>
                 <li>
-                  <strong className='text-primary-600'>GRASP Framework: </strong>
+                  <strong>
+                    <span className='bg-gradient-to-b from-gray-700 to-gray-400 bg-clip-text text-transparent'>GRASP</span>
+                    {' Framework: '}
+                  </strong>
                   A reinforcement-learning policy trained entirely in GPU-accelerated simulation (NVIDIA Isaac Lab) that transfers to a real robot with no fine-tuning. Privileged reward shaping during training teaches the policy to produce clean, repeatable force–deflection curves — without ever handing it the ground-truth answer.
                 </li>
                 <li>
-                  <strong className='text-primary-600'>GRASP Platform: </strong>
+                  <strong>
+                    <span className='bg-gradient-to-b from-gray-700 to-gray-400 bg-clip-text text-transparent'>GRASP</span>
+                    {' Platform: '}
+                  </strong>
                   A UFactory xArm6 mounted on an AgileX Bunker Pro mobile base, equipped with a ZED X stereo camera for real-time 3-D stalk localization and autonomous push execution in field conditions.
                 </li>
                 <li>
-                  <strong className='text-primary-600'>GRASP Dataset: </strong>
+                  <strong>
+                    <span className='bg-gradient-to-b from-gray-700 to-gray-400 bg-clip-text text-transparent'>GRASP</span>
+                    {' Dataset: '}
+                  </strong>
                   ~1,500 field images auto-annotated using a SAM 3 → YOLOv8-seg pipeline, enabling zero-shot stalk segmentation with no manual labelling and real-time inference at 30 Hz on edge hardware.
                 </li>
               </ul>
