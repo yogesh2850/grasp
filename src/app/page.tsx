@@ -569,14 +569,14 @@ export default function HomePage() {
         </section>
 
         {/* ── Citation ─────────────────────────────────────────────────── */}
-        <section id='citation' className={clsx(bgColor, textColor)}>
+        <section id='citation' className={clsx(secondaryBgColor, textColor)}>
           <div className='layout pb-48 pt-12'>
             <h2 className='mb-4'>Citation</h2>
             <pre className='ml-12 overflow-x-auto text-sm'>{siteContent.citation}</pre>
           </div>
         </section>
 
-      <footer className='bg-gray-100'>
+      <footer className='bg-white'>
         <div className='layout py-8 text-center text-sm text-gray-500'>
           Website template modified from{' '}
           <a
