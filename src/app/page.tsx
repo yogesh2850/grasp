@@ -443,8 +443,8 @@ export default function HomePage() {
             <div className='mb-6'>
               <h3 className='mb-1 text-2xl font-semibold'>Isaac Lab Training</h3>
               <div className='mt-6 grid gap-6 md:grid-cols-2'>
-                {/* RL training pipeline image — first */}
-                <div className='overflow-hidden rounded-xl border border-gray-200 bg-white'>
+                {/* RL training pipeline image — full width */}
+                <div className='col-span-2 overflow-hidden rounded-xl border border-gray-200 bg-white'>
                   <img
                     src={asset('/images/thesis/rl/rl_training_pipeline.png')}
                     alt='RL training pipeline'
