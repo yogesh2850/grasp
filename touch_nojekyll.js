@@ -1,9 +1,12 @@
 const shell = require('shelljs');
 const path = require('path');
-// Define the build directory. Update this to your actual build directory if different.
-const buildDir = path.resolve(__dirname, 'docs');
 
-// Create the .nojekyll file in the build directory
+// Create .nojekyll in the build output directory (prevents Jekyll inside docs/)
+const buildDir = path.resolve(__dirname, 'docs');
 shell.touch(path.join(buildDir, '.nojekyll'));
 
-console.log('.nojekyll file created in build directory.');
+// Also keep .nojekyll at repo root so GitHub Pages never runs Jekyll
+// on the master branch even if source is temporarily set to branch/root
+shell.touch(path.join(__dirname, '.nojekyll'));
+
+console.log('.nojekyll created in docs/ and repo root.');
