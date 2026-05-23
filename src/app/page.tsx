@@ -14,9 +14,9 @@ import { asset } from '@/lib/asset';
 
 /* ─── Nav ───────────────────────────────────────────────────────────────── */
 const NAV_LINKS = [
-  { label: 'Introduction', href: '#abstract'     },
-  { label: 'Overview',    href: '#overview'     },
-  { label: 'Methodology', href: '#methodology'  },
+  { label: 'Introduction',      href: '#abstract'       },
+  { label: 'Contributions',    href: '#contributions'  },
+  { label: 'Methodology',      href: '#methodology'    },
   { label: 'Results',     href: '#results'      },
   { label: 'Q & A',       href: '#qa'           },
   { label: 'Citation',    href: '#citation'     },
@@ -242,30 +242,25 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Overview ─────────────────────────────────────────────────── */}
-        <section id='overview' className='bg-dark py-12 text-gray-200'>
-          <div className='layout'>
-            <h2 className='pb-6 text-white'>Overview</h2>
-            <div className='grid gap-8 md:grid-cols-3'>
-              {[
-                {
-                  title: 'Problem',
-                  body: 'Maize stalk rot causes 10–30% annual yield losses by degrading internal stem tissue while leaving the outer canopy visually intact. The current field standard — a manual push test — cannot scale to the 30,000+ plants per acre needed for population-level assessment.',
-                },
-                {
-                  title: 'Approach',
-                  body: 'GRASP trains a mobile manipulator entirely in GPU-accelerated simulation (NVIDIA Isaac Lab) using reinforcement learning with deformable plant models. A SAM 3 → YOLOv8-seg perception pipeline provides real-time stalk segmentation without any manual labelling.',
-                },
-                {
-                  title: 'Key Result',
-                  body: 'The RL policy successfully transfers from simulation to the physical xArm6 + Bunker Pro platform, executing controlled lateral push tests and recovering a continuous stiffness estimate — the first fully autonomous robotic push-test system for maize stalk phenotyping.',
-                },
-              ].map(({ title, body }) => (
-                <div key={title} className='rounded-xl border border-white/10 bg-gray-900/50 p-6 backdrop-blur'>
-                  <h3 className='mb-2 text-lg font-semibold text-primary-400'>{title}</h3>
-                  <p className='text-sm leading-relaxed text-gray-300'>{body}</p>
-                </div>
-              ))}
+        {/* ── Key Contributions ────────────────────────────────────────── */}
+        <section id='contributions' className={clsx(bgColor, textColor)}>
+          <div className='layout py-12'>
+            <div className='mx-auto max-w-3xl'>
+              <h2 className='mb-8 text-center'>Key Contributions</h2>
+              <ul className='space-y-5 text-sm leading-relaxed text-gray-600'>
+                <li>
+                  <strong className='text-primary-600'>GRASP Framework: </strong>
+                  A reinforcement-learning policy trained entirely in GPU-accelerated simulation (NVIDIA Isaac Lab) that transfers to a real robot with no fine-tuning. Privileged reward shaping during training teaches the policy to produce clean, repeatable force–deflection curves — without ever handing it the ground-truth answer.
+                </li>
+                <li>
+                  <strong className='text-primary-600'>GRASP Platform: </strong>
+                  A UFactory xArm6 mounted on an AgileX Bunker Pro mobile base, equipped with a ZED X stereo camera for real-time 3-D stalk localization and autonomous push execution in field conditions.
+                </li>
+                <li>
+                  <strong className='text-primary-600'>GRASP Dataset: </strong>
+                  ~1,500 field images auto-annotated using a SAM 3 → YOLOv8-seg pipeline, enabling zero-shot stalk segmentation with no manual labelling and real-time inference at 30 Hz on edge hardware.
+                </li>
+              </ul>
             </div>
           </div>
         </section>
@@ -541,6 +536,33 @@ export default function HomePage() {
                 Quite a bit. GRASP currently handles one stalk at a time; row-level throughput still requires a person to drive the platform. The policy is a Phase-1 teacher — we haven't distilled it into a student that drops privileged observations entirely. At the highest stiffness values tested, success rates drop; the policy hasn't fully learned to push hard enough without losing control. These are the open problems ahead.
               </p>
 
+            </div>
+          </div>
+        </section>
+
+        {/* ── Contact ──────────────────────────────────────────────────── */}
+        <section className={clsx(secondaryBgColor, textColor)}>
+          <div className='layout py-10 text-center'>
+            <h2 className='mb-6'>Paper &amp; Contact</h2>
+            <div className='flex flex-wrap items-center justify-center gap-3'>
+              <a
+                href={siteContent.links.arxiv}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='flex items-center gap-2 rounded-full bg-gray-800 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-700'
+              >
+                <img src={asset('/svg/arxiv.svg')} alt='arXiv' className='h-5 w-5' />
+                arXiv
+              </a>
+              <a
+                href='mailto:yogeshchawla2850@gmail.com'
+                className='flex items-center gap-2 rounded-full border border-gray-300 bg-white px-5 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50'
+              >
+                <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth={2}>
+                  <path strokeLinecap='round' strokeLinejoin='round' d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' />
+                </svg>
+                Contact
+              </a>
             </div>
           </div>
         </section>
