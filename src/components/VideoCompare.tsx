@@ -90,7 +90,7 @@ export default function VideoCompare({
         ref={leftRef}
         src={leftSrc}
         autoPlay muted loop playsInline
-        className='absolute inset-0 h-full w-full object-cover pointer-events-none select-none'
+        className='absolute inset-0 h-full w-full object-contain pointer-events-none select-none'
       />
 
       {/* Right video — clipped overlay */}
@@ -98,7 +98,7 @@ export default function VideoCompare({
         ref={rightRef}
         src={rightSrc}
         autoPlay muted loop playsInline
-        className='absolute inset-0 h-full w-full object-cover pointer-events-none select-none'
+        className='absolute inset-0 h-full w-full object-contain pointer-events-none select-none'
         style={{ clipPath: clip, WebkitClipPath: clip as string }}
       />
 
