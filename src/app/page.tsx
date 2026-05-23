@@ -317,7 +317,7 @@ export default function HomePage() {
                     initial={0.5}
                     leftLabel='Dataset Row 1'
                     rightLabel='Dataset Row 2'
-                    className='aspect-[4/3] w-full' fit='contain'
+                    className='aspect-[1199/700] w-full' fit='contain'
                     rightBg='#ffffff'
                   />
                   <p className='mt-2 text-center text-xs text-gray-400'>
@@ -333,7 +333,7 @@ export default function HomePage() {
                       leftAlt={cmp.leftLabel}       rightAlt={cmp.rightLabel}
                       initial={0.5}
                       leftLabel={cmp.leftLabel}     rightLabel={cmp.rightLabel}
-                      className='aspect-[4/3] w-full' fit='contain'
+                      className='aspect-[1800/699] w-full' fit='contain'
                     />
                     <p className='mt-2 text-center text-xs text-gray-400'>
                       {cmp.leftLabel} / {cmp.rightLabel}
