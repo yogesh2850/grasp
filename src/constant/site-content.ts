@@ -16,7 +16,7 @@ export const siteContent = {
 
   authors: [
     { name: 'Yogesh Chawla',      url: 'http://yogesh-chawla.com/',                                              affiliations: '1' },
-    { name: 'Nitesh Subedi',      url: 'https://scholar.google.com/citations?user=pSmoZbgAAAAJ&hl=en',           affiliations: '2' },
+    { name: 'Nitesh Subedi',      url: 'https://nitesh-subedi.github.io/',                                      affiliations: '2' },
     { name: 'Nils Hoppe',         url: '',                                                                        affiliations: '3' },
     { name: 'Mridula Buragohain', url: 'https://mridulaburagohain.github.io/',                                   affiliations: '4' },
     { name: 'Krishna Muvva',      url: 'https://krishnamuvva.com/',                                              affiliations: '5' },
