@@ -546,9 +546,14 @@ export default function HomePage() {
                 Force alone tells you how hard you pushed, not how stiff the plant is. Stiffness is the slope of the force–deflection curve: resistance per unit of bending. Push at the wrong angle, miss the right height, or move too fast — and the slope you measure doesn't reflect the true material property. That's why GRASP rewards push quality — a clean, perpendicular contact at the right stalk height — not just contact.
               </p>
 
-              <p><strong>Q: 🎓 How do you use ground-truth stiffness without cheating?</strong></p>
+              <p><strong>Q: 🌿 Can GRASP generalize to other crops?</strong></p>
               <p style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }} className='text-sm leading-relaxed text-gray-600'>
-                The ground truth never reaches the policy. During training, a privileged critic grades every push using the simulator's finite-element state — true deflection, true stiffness, true contact force — and these signals shape the reward. The policy itself only ever sees what a real robot has: a camera image, a stalk mask, and proprioception. When we deploy, the critic is gone; the policy runs on sensor data alone. The ground truth is a teacher, not a crutch.
+                The method generalizes; the specific policy needs retraining. Nothing in GRASP's reward design is maize-specific — it rewards a clean force–deflection response measured by Euler–Bernoulli beam theory, which holds for any approximately cantilevered stem (sorghum, sugarcane, sunflower, young trees). To move to a new crop you'd swap the deformable plant model and re-randomize stiffness over that species' biological range; the reward terms, privileged-shaping scheme, and control stack stay the same. What wouldn't transfer directly is geometry-dependent behavior — plants with branching structures, very short stems, or non-cantilever growth habits would need the push-target logic rethought. So GRASP is a recipe for stem-stiffness assessment, instantiated here on maize.
+              </p>
+
+              <p><strong>Q: 🤖 Why reinforcement learning instead of a scripted push?</strong></p>
+              <p style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }} className='text-sm leading-relaxed text-gray-600'>
+                A scripted push assumes you already know where and how to contact the stalk — but stalk position, height, and stiffness vary every time, and the same motion that reads one plant cleanly will slip off or over-bend the next. The policy learns to adapt the push online from vision and proprioception, finding the right height, angle, and force for whatever plant is in front of it. The scripted version is the thing RL has to beat, and the push-quality reward is what lets it.
               </p>
 
               <p><strong>Q: 🔧 What can't GRASP do yet?</strong></p>
