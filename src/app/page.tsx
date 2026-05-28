@@ -482,8 +482,8 @@ export default function HomePage() {
             <div className='mb-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4'>
               {[
                 { stat: '30 Hz',    label: 'Real-time perception',        sub: 'YOLOv8-seg on edge hardware' },
-                { stat: '10×',      label: 'Stiffness range covered',     sub: '10⁷ – 10⁸ Pa randomised' },
-                { stat: '~1,500',   label: 'Field images auto-annotated', sub: 'Zero manual labelling' },
+                { stat: '10×',      label: 'Stiffness range covered',     sub: '5×10⁶ – 10⁸ Pa randomised' },
+                { stat: '23,883',   label: 'Field images auto-annotated', sub: 'Zero manual labelling' },
                 { stat: 'Sim→Real', label: 'Policy transfer',             sub: 'xArm6 + Bunker Pro' },
               ].map(({ stat, label, sub }) => (
                 <div key={label} className='rounded-xl border border-gray-200 bg-white p-6 text-center shadow-sm'>
