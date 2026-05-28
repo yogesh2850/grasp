@@ -462,20 +462,6 @@ export default function HomePage() {
                   />
                 </div>
 
-                {[
-                  'Reward composition / staged reward diagram',
-                  'Privileged-information flow diagram',
-                  'Observation → policy → action → IK control diagram',
-                  'Force–deflection linearity concept',
-                ].map((label) => (
-                  <div
-                    key={label}
-                    className='flex aspect-[4/3] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-200 bg-gray-50 px-6 text-center text-sm text-gray-400'
-                  >
-                    <p className='font-medium text-gray-500'>{label}</p>
-                    <p className='mt-1 text-xs text-gray-300'>diagram coming soon</p>
-                  </div>
-                ))}
               </div>
             </div>
 
