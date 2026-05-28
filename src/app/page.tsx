@@ -455,7 +455,7 @@ export default function HomePage() {
                 {/* RL training pipeline image — full width */}
                 <div className='col-span-2 overflow-hidden rounded-xl border border-gray-200 bg-white'>
                   <img
-                    src={asset('/images/thesis/rl/rl_training_pipeline.png')}
+                    src={asset('/images/thesis/rl/architecture.png')}
                     alt='RL training pipeline'
                     className='w-full object-contain'
                     loading='lazy'
