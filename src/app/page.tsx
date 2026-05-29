@@ -494,6 +494,19 @@ export default function HomePage() {
               ))}
             </div>
 
+            {/* Real-plant result images — 4 in one row */}
+            <div className='mb-8 grid grid-cols-2 gap-3 md:grid-cols-4'>
+              {['2_19', '3_19', '3_12', '2_12'].map((name) => (
+                <img
+                  key={name}
+                  src={asset(`/images/thesis/results/${name}.png`)}
+                  alt={name}
+                  className='w-full rounded-xl border border-gray-200 object-contain'
+                  loading='lazy'
+                />
+              ))}
+            </div>
+
             {/* Result placeholders */}
             <div className='grid gap-6 md:grid-cols-2'>
               {[
