@@ -496,14 +496,21 @@ export default function HomePage() {
 
             {/* Real-plant result images — 4 in one row */}
             <div className='mb-8 grid grid-cols-2 gap-3 md:grid-cols-4'>
-              {['2_19', '3_19', '3_12', '2_12'].map((name) => (
-                <img
-                  key={name}
-                  src={asset(`/images/thesis/results/${name}.png`)}
-                  alt={name}
-                  className='w-full rounded-xl border border-gray-200 object-contain'
-                  loading='lazy'
-                />
+              {[
+                { name: '2_19', caption: 'P2 (2/19) — Intermediate stage' },
+                { name: '3_19', caption: 'P4 (3/19) — Most mature'        },
+                { name: '3_12', caption: 'P3 (3/12) — Mature'             },
+                { name: '2_12', caption: 'P1 (2/12) — Oldest plant'       },
+              ].map(({ name, caption }) => (
+                <div key={name}>
+                  <img
+                    src={asset(`/images/thesis/results/${name}.png`)}
+                    alt={caption}
+                    className='w-full rounded-xl border border-gray-200 object-contain'
+                    loading='lazy'
+                  />
+                  <p className='mt-1.5 text-center text-xs text-gray-400'>{caption}</p>
+                </div>
               ))}
             </div>
 
