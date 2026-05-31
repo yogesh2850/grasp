@@ -303,7 +303,7 @@ export default function HomePage() {
 
                 {/* Right — 3D CAD viewer (40%) */}
                 <div>
-                  <div className='overflow-hidden rounded-xl border border-gray-200' style={{ transform: 'rotateY(180deg)' }}>
+                  <div className='overflow-hidden rounded-xl border border-gray-200' style={{ transform: 'rotateY(180deg) rotateX(180deg)' }}>
                     <StepViewer
                       src={asset('/models/Transformer_assambly.stp')}
                       className='aspect-square w-full'
