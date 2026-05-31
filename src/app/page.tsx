@@ -527,7 +527,7 @@ export default function HomePage() {
                     className='w-full rounded-xl border border-gray-200 object-contain'
                     loading='lazy'
                   />
-                  <p className='mt-1.5 text-center text-xs text-gray-400'>{caption}</p>
+                  <p className='mt-1.5 text-center text-xs text-gray-600'>{caption}</p>
                 </div>
               ))}
             </div>
