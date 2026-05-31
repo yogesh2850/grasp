@@ -101,7 +101,7 @@ export default function HomePage() {
                   key={i}
                   className={
                     part.highlight
-                      ? 'bg-gradient-to-b from-green-900 to-green-600 bg-clip-text text-transparent'
+                      ? 'bg-gradient-to-b from-cyan-400 to-sky-600 bg-clip-text text-transparent'
                       : 'text-white'
                   }
                 >
@@ -252,21 +252,21 @@ export default function HomePage() {
               <ul className='space-y-5 text-sm leading-relaxed text-gray-600'>
                 <li>
                   <strong>
-                    <span className='bg-gradient-to-b from-green-900 to-green-600 bg-clip-text text-transparent'>GRASP</span>
+                    <span className='bg-gradient-to-b from-cyan-400 to-sky-600 bg-clip-text text-transparent'>GRASP</span>
                     {' Dataset — '}
                   </strong>
                   21,541 field images auto-annotated through a SAM-3 → YOLOv8/v11/v26-seg pipeline, enabling zero-shot stalk segmentation with no manual labeling and real-time inference at 30 Hz on edge hardware.
                 </li>
                 <li>
                   <strong>
-                    <span className='bg-gradient-to-b from-green-900 to-green-600 bg-clip-text text-transparent'>GRASP</span>
+                    <span className='bg-gradient-to-b from-cyan-400 to-sky-600 bg-clip-text text-transparent'>GRASP</span>
                     {' Platform — '}
                   </strong>
                   A UFactory xArm6 manipulator mounted on an AgileX Bunker Pro mobile base, paired with a ZED X stereo camera for real-time 3D stalk localization and autonomous push execution under field conditions.
                 </li>
                 <li>
                   <strong>
-                    <span className='bg-gradient-to-b from-green-900 to-green-600 bg-clip-text text-transparent'>GRASP</span>
+                    <span className='bg-gradient-to-b from-cyan-400 to-sky-600 bg-clip-text text-transparent'>GRASP</span>
                     {' Framework — '}
                   </strong>
                   A reinforcement-learning policy trained entirely in GPU-accelerated simulation (NVIDIA Isaac Lab) that transfers zero-shot to real hardware, executing consistent, repeatable pushes and recovering a continuous per-plant stiffness estimate.
