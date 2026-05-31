@@ -322,22 +322,19 @@ export default function HomePage() {
                 running at 30&nbsp;Hz. Drag each slider to compare input and output.
               </p>
               <div className='grid gap-6 md:grid-cols-2'>
-                {/* 1. Dataset rows — two images side by side, full width */}
-                <div className='col-span-2'>
-                  <div className='grid grid-cols-2 gap-3'>
-                    <img
-                      src={asset('/images/thesis/perception/dataset_row1.png')}
-                      alt='Dataset Row 1'
-                      className='w-full rounded-xl border border-gray-200 object-contain'
-                      loading='lazy'
-                    />
-                    <img
-                      src={asset('/images/thesis/perception/dataset_row2.png')}
-                      alt='Dataset Row 2'
-                      className='w-full rounded-xl border border-gray-200 object-contain'
-                      loading='lazy'
-                    />
-                  </div>
+                {/* 1. Dataset rows slider */}
+                <div>
+                  <ImageCompare
+                    leftSrc={asset('/images/thesis/perception/dataset_row1.png')}
+                    rightSrc={asset('/images/thesis/perception/dataset_row2.png')}
+                    leftAlt='Dataset Row 1'
+                    rightAlt='Dataset Row 2'
+                    initial={0.5}
+                    leftLabel='Row 1'
+                    rightLabel='Row 2'
+                    className='aspect-[4/3] w-full' fit='contain'
+                    rightBg='#ffffff'
+                  />
                   <p className='mt-2 text-center text-xs text-gray-400'>Diverse Dataset used for training</p>
                 </div>
 
