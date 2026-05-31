@@ -253,23 +253,23 @@ export default function HomePage() {
                 <li>
                   <strong>
                     <span className='bg-gradient-to-b from-green-900 to-green-600 bg-clip-text text-transparent'>GRASP</span>
-                    {' Framework: '}
+                    {' Dataset — '}
                   </strong>
-                  A reinforcement-learning policy trained entirely in GPU-accelerated simulation (NVIDIA Isaac Lab) that transfers to a real robot with no fine-tuning. Privileged reward shaping during training teaches the policy to produce clean, repeatable force–deflection curves — without ever handing it the ground-truth answer.
+                  21,541 field images auto-annotated through a SAM-3 → YOLOv8/v11/v26-seg pipeline, enabling zero-shot stalk segmentation with no manual labeling and real-time inference at 30 Hz on edge hardware.
                 </li>
                 <li>
                   <strong>
                     <span className='bg-gradient-to-b from-green-900 to-green-600 bg-clip-text text-transparent'>GRASP</span>
-                    {' Platform: '}
+                    {' Platform — '}
                   </strong>
-                  A UFactory xArm6 mounted on an AgileX Bunker Pro mobile base, equipped with a ZED X stereo camera for real-time 3-D stalk localization and autonomous push execution in field conditions.
+                  A UFactory xArm6 manipulator mounted on an AgileX Bunker Pro mobile base, paired with a ZED X stereo camera for real-time 3D stalk localization and autonomous push execution under field conditions.
                 </li>
                 <li>
                   <strong>
                     <span className='bg-gradient-to-b from-green-900 to-green-600 bg-clip-text text-transparent'>GRASP</span>
-                    {' Dataset: '}
+                    {' Framework — '}
                   </strong>
-                  21,541 field images auto-annotated using a SAM 3 → YOLOv8/v11/v26-seg pipeline, enabling zero-shot stalk segmentation with no manual labelling and real-time inference at 30 Hz on edge hardware.
+                  A reinforcement-learning policy trained entirely in GPU-accelerated simulation (NVIDIA Isaac Lab) that transfers zero-shot to real hardware, executing consistent, repeatable pushes and recovering a continuous per-plant stiffness estimate.
                 </li>
               </ul>
             </div>
