@@ -539,7 +539,6 @@ export default function HomePage() {
             <div className='grid gap-6 md:grid-cols-2'>
               {[
                 'Training curves',
-                'Push-quality behavior',
                 'Stiffness recovery',
                 'End-to-end results',
                 'Sim-to-real',
