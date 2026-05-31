@@ -80,7 +80,7 @@ function StickyNav() {
 export default function HomePage() {
   const textColor        = 'text-gray-600';
   const bgColor          = 'bg-white';
-  const secondaryBgColor = 'bg-green-50';
+  const secondaryBgColor = 'bg-gray-100';
   const hlTextColor      = 'text-primary-600';
   const linkIconClass    = 'h-6 w-6 shrink-0';
 
