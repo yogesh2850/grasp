@@ -307,7 +307,6 @@ export default function HomePage() {
                     <StepViewer
                       src={asset('/models/Transformer_assambly.stp')}
                       className='aspect-square w-full'
-                      flipX
                     />
                   </div>
                   <p className='mt-2 text-center text-xs text-gray-400'>Camera Mounting</p>

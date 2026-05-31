@@ -5,11 +5,9 @@ import React, { useEffect, useRef, useState } from 'react';
 type Props = {
   src: string;
   className?: string;
-  /** Rotate 180° around the horizontal (X) axis — flips the model upside-down */
-  flipX?: boolean;
 };
 
-export default function StepViewer({ src, className = '', flipX = false }: Props) {
+export default function StepViewer({ src, className = '' }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewerRef    = useRef<any>(null);
   const [status, setStatus] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle');
@@ -45,14 +43,8 @@ export default function StepViewer({ src, className = '', flipX = false }: Props
 
   return (
     <div className={['relative', className].join(' ')}>
-      {/* Viewer — optionally flipped around the X axis */}
-      <div
-        ref={containerRef}
-        className='absolute inset-0'
-        style={flipX ? { transform: 'rotateX(270deg)' } : undefined}
-      />
+      <div ref={containerRef} className='absolute inset-0' />
 
-      {/* Loading overlay */}
       {status === 'loading' && (
         <div className='absolute inset-0 flex flex-col items-center justify-center gap-2 bg-gray-50 text-xs text-gray-400'>
           <svg className='h-5 w-5 animate-spin' viewBox='0 0 24 24' fill='none'>
