@@ -37,7 +37,7 @@ export const siteContent = {
     github:   'https://github.com/yogesh2850/grasp',
     pdf:      '#',
     dataset:  '#',
-    assembly: '#',
+    assembly: 'https://drive.google.com/drive/folders/12M6pMwm3hCQgPGQWIas_aWESB-KsiBAC?usp=sharing',
   },
 
   tldr: `GRASP trains a mobile manipulator entirely in GPU-accelerated simulation to autonomously replicate the agronomist's maize push test — using RL with deformable plant models and a SAM 3 → YOLOv8 perception pipeline — and successfully transfers the policy to a real xArm6 + Bunker Pro robot to recover a continuous per-plant stiffness estimate.`,
