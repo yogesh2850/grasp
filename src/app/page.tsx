@@ -80,7 +80,7 @@ function StickyNav() {
 export default function HomePage() {
   const textColor        = 'text-gray-600';
   const bgColor          = 'bg-white';
-  const secondaryBgColor = 'bg-gray-100';
+  const secondaryBgColor = 'bg-green-50';
   const hlTextColor      = 'text-primary-600';
   const linkIconClass    = 'h-6 w-6 shrink-0';
 
@@ -389,7 +389,7 @@ export default function HomePage() {
             </div>
 
             {/* ── 3. Isaac Lab Setup ── */}
-            <div className='mb-14'>
+            <div className={clsx(secondaryBgColor, 'mb-14 rounded-2xl p-6')}>
               <h3 className='mb-1 text-2xl font-semibold'>Isaac Lab Setup</h3>
               <p className='mb-6 text-sm leading-relaxed text-gray-500'>
                 Deformable maize plant models with FEM physics are placed in GPU-parallel Isaac Lab
