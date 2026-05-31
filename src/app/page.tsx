@@ -7,6 +7,7 @@ import '@/lib/env';
 import Figure from '@/components/Figure';
 import ImageCompare from '@/components/Compare';
 import VideoCompare from '@/components/VideoCompare';
+import StepViewer from '@/components/StepViewer';
 import ArrowLink from '@/components/links/ArrowLink';
 import UnderlineLink from '@/components/links/UnderlineLink';
 import { siteContent } from '@/constant/site-content';
@@ -289,13 +290,24 @@ export default function HomePage() {
                 ZED&nbsp;X stereo camera provides RGB-D perception; a gripper-mounted depth
                 camera provides close-range feedback for contact control.
               </p>
-              <div className='mx-auto max-w-2xl overflow-hidden rounded-xl border border-gray-200'>
-                <img
-                  src={asset('/images/thesis/hardware/hardware_complete.png')}
-                  alt='GRASP hardware platform'
-                  className='w-full object-contain'
-                  loading='lazy'
-                />
+              <div className='grid gap-6 md:grid-cols-2'>
+                {/* Left — hardware photo */}
+                <div className='overflow-hidden rounded-xl border border-gray-200'>
+                  <img
+                    src={asset('/images/thesis/hardware/hardware_complete.png')}
+                    alt='GRASP hardware platform'
+                    className='w-full object-contain'
+                    loading='lazy'
+                  />
+                </div>
+
+                {/* Right — 3D CAD viewer */}
+                <div className='overflow-hidden rounded-xl border border-gray-200'>
+                  <StepViewer
+                    src={asset('/models/Transformer_assambly.stp')}
+                    className='aspect-square w-full'
+                  />
+                </div>
               </div>
             </div>
 
@@ -483,7 +495,7 @@ export default function HomePage() {
               {[
                 { stat: '30 Hz',    label: 'Real-time perception',        sub: 'YOLOv8-seg on edge hardware' },
                 { stat: '10×',      label: 'Stiffness range covered',     sub: '5×10⁶ – 10⁸ Pa randomised' },
-                { stat: '23,883',   label: 'Field images auto-annotated', sub: 'Zero manual labelling' },
+                { stat: '21,541',   label: 'Field images 0 shot annotated', sub: 'Zero manual labelling' },
                 { stat: 'Sim→Real', label: 'Policy transfer',             sub: 'xArm6 + Bunker Pro' },
               ].map(({ stat, label, sub }) => (
                 <div key={label} className='rounded-xl border border-gray-200 bg-white p-6 text-center shadow-sm'>
