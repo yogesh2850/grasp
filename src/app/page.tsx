@@ -123,7 +123,7 @@ export default function HomePage() {
                       href={author.url}
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='underline decoration-white/40 underline-offset-2 transition-colors hover:text-green-800 hover:decoration-green-800'
+                      className='underline decoration-white/40 underline-offset-2 transition-colors hover:text-green-300 hover:decoration-green-300'
                     >
                       {author.name}
                     </a>
