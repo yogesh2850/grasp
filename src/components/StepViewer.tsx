@@ -49,7 +49,7 @@ export default function StepViewer({ src, className = '', flipX = false }: Props
       <div
         ref={containerRef}
         className='absolute inset-0'
-        style={flipX ? { transform: 'rotateX(180deg)' } : undefined}
+        style={flipX ? { transform: 'rotateX(270deg)' } : undefined}
       />
 
       {/* Loading overlay */}
