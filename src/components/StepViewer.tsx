@@ -5,9 +5,11 @@ import React, { useEffect, useRef, useState } from 'react';
 type Props = {
   src: string;
   className?: string;
+  /** Rotate 180° around the horizontal (X) axis — flips the model upside-down */
+  flipX?: boolean;
 };
 
-export default function StepViewer({ src, className = '' }: Props) {
+export default function StepViewer({ src, className = '', flipX = false }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewerRef    = useRef<any>(null);
   const [status, setStatus] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle');
@@ -19,14 +21,13 @@ export default function StepViewer({ src, className = '' }: Props) {
     setStatus('loading');
 
     import('online-3d-viewer').then((OV) => {
-      // Clean up any previous instance
       if (viewerRef.current?.Destroy) viewerRef.current.Destroy();
 
       const viewer = new (OV as any).EmbeddedViewer(el, {
-        backgroundColor: new (OV as any).RGBAColor(245, 245, 245, 255),
-        defaultColor:    new (OV as any).RGBColor(180, 180, 180),
-        edgeSettings:    new (OV as any).EdgeSettings(true, new (OV as any).RGBColor(80, 80, 80), 1),
-        onModelLoaded:   () => setStatus('ready'),
+        backgroundColor:  new (OV as any).RGBAColor(245, 245, 245, 255),
+        defaultColor:     new (OV as any).RGBColor(180, 180, 180),
+        edgeSettings:     new (OV as any).EdgeSettings(true, new (OV as any).RGBColor(80, 80, 80), 1),
+        onModelLoaded:    () => setStatus('ready'),
         onModelLoadError: () => setStatus('error'),
       });
 
@@ -44,8 +45,12 @@ export default function StepViewer({ src, className = '' }: Props) {
 
   return (
     <div className={['relative', className].join(' ')}>
-      {/* Viewer mounts here */}
-      <div ref={containerRef} className='absolute inset-0' />
+      {/* Viewer — optionally flipped around the X axis */}
+      <div
+        ref={containerRef}
+        className='absolute inset-0'
+        style={flipX ? { transform: 'rotateX(180deg)' } : undefined}
+      />
 
       {/* Loading overlay */}
       {status === 'loading' && (

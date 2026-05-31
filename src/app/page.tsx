@@ -290,8 +290,8 @@ export default function HomePage() {
                 ZED&nbsp;X stereo camera provides RGB-D perception; a gripper-mounted depth
                 camera provides close-range feedback for contact control.
               </p>
-              <div className='grid gap-6 md:grid-cols-2'>
-                {/* Left — hardware photo */}
+              <div className='grid gap-6 md:grid-cols-[3fr_2fr]'>
+                {/* Left — hardware photo (60%) */}
                 <div className='overflow-hidden rounded-xl border border-gray-200'>
                   <img
                     src={asset('/images/thesis/hardware/hardware_complete.png')}
@@ -301,12 +301,16 @@ export default function HomePage() {
                   />
                 </div>
 
-                {/* Right — 3D CAD viewer */}
-                <div className='overflow-hidden rounded-xl border border-gray-200'>
-                  <StepViewer
-                    src={asset('/models/Transformer_assambly.stp')}
-                    className='aspect-square w-full'
-                  />
+                {/* Right — 3D CAD viewer (40%) */}
+                <div>
+                  <div className='overflow-hidden rounded-xl border border-gray-200'>
+                    <StepViewer
+                      src={asset('/models/Transformer_assambly.stp')}
+                      className='aspect-square w-full'
+                      flipX
+                    />
+                  </div>
+                  <p className='mt-2 text-center text-xs text-gray-400'>Camera Mounting</p>
                 </div>
               </div>
             </div>
