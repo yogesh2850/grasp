@@ -40,7 +40,7 @@ export const siteContent = {
     assembly: 'https://drive.google.com/drive/folders/12M6pMwm3hCQgPGQWIas_aWESB-KsiBAC?usp=sharing',
   },
 
-  tldr: `GRASP trains a mobile manipulator entirely in GPU-accelerated simulation to autonomously replicate the agronomist's maize push test — using RL with deformable plant models and a SAM 3 → YOLOv8 perception pipeline — and successfully transfers the policy to a real xArm6 + Bunker Pro robot to recover a continuous per-plant stiffness estimate.`,
+  tldr: `GRASP trains a mobile manipulator entirely in GPU-accelerated simulation to autonomously replicate the agronomist's maize push test using RL with randomized deformable plant models, privileged reward shaping on FEM ground truth, and a SAM-segmented perception pipeline then distills the policy into a lightweight teacher–student model that recovers a continuous per-plant stiffness estimate from proprioception alone, transferring zero-shot to a real xArm6 + Bunker Pro robot.`,
 
   /** Path to graphical abstract image under public/ — leave empty until ready */
   graphicalAbstract: '/images/thesis/rl/sim2real_final.png' as string,
