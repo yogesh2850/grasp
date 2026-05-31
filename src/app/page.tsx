@@ -560,27 +560,31 @@ export default function HomePage() {
 
               <p><strong>Q: 🌾 Why simulate plants instead of just collecting real push data?</strong></p>
               <p style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }} className='text-sm leading-relaxed text-gray-600'>
-                Real-field data collection doesn't scale. Stiffness varies by more than an order of magnitude from plant to plant and week to week — capturing that range means walking every row with a sensor, running trials on plants that can't be reused, and still ending up with data too narrow to cover edge cases. Simulation lets us randomize stiffness over the full biological range in every episode, run thousands of parallel pushes overnight, and never harm a plant.
+                Real-field data collection doesn't scale. Stiffness varies by more than an order of magnitude from plant to plant and week to week — capturing that range means walking every row with a setup, running trials on plants that can't be reused, and still ending up with data too narrow to cover edge cases. Simulation lets us randomize stiffness over the full biological range in every episode, run thousands of parallel pushes overnight, and never harm a plant.
               </p>
 
               <p><strong>Q: 📏 Isn't measuring stiffness just measuring force?</strong></p>
               <p style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }} className='text-sm leading-relaxed text-gray-600'>
-                Force alone tells you how hard you pushed, not how stiff the plant is. Stiffness is the slope of the force–deflection curve: resistance per unit of bending. Push at the wrong angle, miss the right height, or move too fast — and the slope you measure doesn't reflect the true material property. That's why GRASP rewards push quality — a clean, perpendicular contact at the right stalk height — not just contact.
+                Force alone tells you how hard you pushed, not how stiff the plant is. Stiffness is the slope of the force–deflection curve — that is, resistance per unit of bending. Push at the wrong angle, wrong height, or too fast, and that slope becomes meaningless noise.
+                {' '}That's why GRASP enforces a quality contact: the arm must approach frontally, engage at mid-stalk height, and sustain the push long enough to drive a measurable 20° tilt. Only then does the GRU estimator see the clean interaction sequence it needs to recover Young's modulus reliably.
               </p>
 
               <p><strong>Q: 🌿 Can GRASP generalize to other crops?</strong></p>
               <p style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }} className='text-sm leading-relaxed text-gray-600'>
-                The method generalizes; the specific policy needs retraining. Nothing in GRASP's reward design is maize-specific — it rewards a clean force–deflection response measured by Euler–Bernoulli beam theory, which holds for any approximately cantilevered stem (sorghum, sugarcane, sunflower, young trees). To move to a new crop you'd swap the deformable plant model and re-randomize stiffness over that species' biological range; the reward terms, privileged-shaping scheme, and control stack stay the same. What wouldn't transfer directly is geometry-dependent behavior — plants with branching structures, very short stems, or non-cantilever growth habits would need the push-target logic rethought. So GRASP is a recipe for stem-stiffness assessment, instantiated here on maize.
+                The method generalizes; the specific policy needs retraining. GRASP's reward design is built on Euler–Bernoulli beam theory, which holds for any approximately cantilevered stem — sorghum, sugarcane, sunflower, young trees. Adapting to a new crop means swapping the deformable plant model and re-randomizing stiffness over that species' biological range. The reward structure, control stack, and GRU estimator stay the same.
+                {' '}The real bottleneck is vision. End-to-end policies don't generalize well to new visual scenes, so detecting the stalk and localizing the push point on an unseen crop would require retraining the segmentation model on that species. This is the most practical barrier to sim-to-real transfer.
               </p>
 
               <p><strong>Q: 🤖 Why reinforcement learning instead of a scripted push?</strong></p>
               <p style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }} className='text-sm leading-relaxed text-gray-600'>
-                A scripted push assumes you already know where and how to contact the stalk — but stalk position, height, and stiffness vary every time, and the same motion that reads one plant cleanly will slip off or over-bend the next. The policy learns to adapt the push online from vision and proprioception, finding the right height, angle, and force for whatever plant is in front of it. The scripted version is the thing RL has to beat, and the push-quality reward is what lets it.
+                A scripted push can get the arm to the stalk — but it can't adapt to what happens next. Stalk stiffness, exact contact geometry, and the arm's approach angle vary every time, and a fixed motion sequence has no way to modulate force in response to what it's feeling.
+                {' '}GRASP separates the two problems: vision finds the push point, IK delivers the arm there, and then RL takes over. The policy learns to adapt the push in real time — adjusting force and angle from proprioception to achieve a clean, informative deflection regardless of how stiff or compliant the plant turns out to be. That adaptability is what a scripted push can never have, and it's exactly what the push-quality reward is designed to produce.
               </p>
 
               <p><strong>Q: 🔧 What can't GRASP do yet?</strong></p>
               <p style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }} className='text-sm leading-relaxed text-gray-600'>
-                Quite a bit. GRASP currently handles one stalk at a time; row-level throughput still requires a person to drive the platform. The policy is a Phase-1 teacher — we haven't distilled it into a student that drops privileged observations entirely. At the highest stiffness values tested, success rates drop; the policy hasn't fully learned to push hard enough without losing control. These are the open problems ahead.
+                Quite a bit. GRASP currently handles one stalk at a time; row-level throughput still requires a person to drive the platform. At the highest stiffness values tested, success rates drop — the policy hasn't fully learned to push hard enough without losing contact.
+                {' '}The bigger open problem is outdoor deployment. Wind causes the stalk to sway continuously, which breaks the locked push-point assumption and disrupts the force–deflection signal the GRU relies on. The current system was developed and evaluated in controlled indoor conditions; making it robust to field dynamics is the most significant gap between the lab and real agricultural use.
               </p>
 
             </div>
