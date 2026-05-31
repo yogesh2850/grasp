@@ -507,6 +507,7 @@ export default function HomePage() {
             </div>
 
             {/* Real-plant result images — 4 in one row */}
+            <h3 className='mb-4 text-xl font-semibold'>Real plant setup for testing</h3>
             <div className='mb-8 grid grid-cols-2 gap-3 md:grid-cols-4'>
               {[
                 { name: '2_19', caption: 'P2 (2/19) — Intermediate stage' },
@@ -532,7 +533,6 @@ export default function HomePage() {
                 'Training curves',
                 'Push-quality behavior',
                 'Stiffness recovery',
-                'Real plant setup',
                 'End-to-end results',
                 'Sim-to-real',
               ].map((label) => (
