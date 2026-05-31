@@ -245,7 +245,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Key Contributions ────────────────────────────────────────── */}
-        <section id='contributions' className={clsx(bgColor, textColor)}>
+        <section id='contributions' className={clsx(secondaryBgColor, textColor)}>
           <div className='layout py-12'>
             <div className='mx-auto max-w-3xl'>
               <h2 className='mb-8 text-center'>Key Contributions</h2>
