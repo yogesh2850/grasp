@@ -269,7 +269,7 @@ export default function HomePage() {
                     <span className='bg-gradient-to-b from-green-900 to-green-600 bg-clip-text text-transparent'>GRASP</span>
                     {' Dataset: '}
                   </strong>
-                  ~1,500 field images auto-annotated using a SAM 3 → YOLOv8-seg pipeline, enabling zero-shot stalk segmentation with no manual labelling and real-time inference at 30 Hz on edge hardware.
+                  21,541 field images auto-annotated using a SAM 3 → YOLOv8/v11/v26-seg pipeline, enabling zero-shot stalk segmentation with no manual labelling and real-time inference at 30 Hz on edge hardware.
                 </li>
               </ul>
             </div>
