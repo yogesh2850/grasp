@@ -75,8 +75,8 @@ The key is privileged reward shaping. During training, every push is graded usin
     {
       leftSrc: '/images/thesis/perception/sam3_1.png',
       rightSrc: '/images/thesis/perception/sam3_2.png',
-      leftLabel: 'SAM 3 Input',
-      rightLabel: 'SAM 3 Mask',
+      leftLabel: 'Case 1',
+      rightLabel: 'Case 2',
     },
     {
       leftSrc: '/images/thesis/simulation/plant.png',

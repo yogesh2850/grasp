@@ -353,7 +353,7 @@ export default function HomePage() {
                       className='aspect-[4/3] w-full' fit='contain'
                     />
                     <p className='mt-2 text-center text-xs text-gray-400'>
-                      {cmp.leftLabel} / {cmp.rightLabel}
+                      SAM 3 Masks Case 1 and 2
                     </p>
                   </div>
                 ))}
