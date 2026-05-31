@@ -101,7 +101,7 @@ export default function HomePage() {
                   key={i}
                   className={
                     part.highlight
-                      ? 'bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent'
+                      ? 'bg-gradient-to-b from-green-900 to-green-600 bg-clip-text text-transparent'
                       : 'text-white'
                   }
                 >
