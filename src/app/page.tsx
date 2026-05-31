@@ -324,25 +324,22 @@ export default function HomePage() {
               </p>
               <div className='grid gap-6 md:grid-cols-2'>
                 {/* 1. Dataset rows — two images side by side, full width */}
-                <div className='col-span-2 grid grid-cols-2 gap-3'>
-                  <div>
+                <div className='col-span-2'>
+                  <div className='grid grid-cols-2 gap-3'>
                     <img
                       src={asset('/images/thesis/perception/dataset_row1.png')}
                       alt='Dataset Row 1'
                       className='w-full rounded-xl border border-gray-200 object-contain'
                       loading='lazy'
                     />
-                    <p className='mt-2 text-center text-xs text-gray-400'>Dataset Row 1</p>
-                  </div>
-                  <div>
                     <img
                       src={asset('/images/thesis/perception/dataset_row2.png')}
                       alt='Dataset Row 2'
                       className='w-full rounded-xl border border-gray-200 object-contain'
                       loading='lazy'
                     />
-                    <p className='mt-2 text-center text-xs text-gray-400'>Dataset Row 2</p>
                   </div>
+                  <p className='mt-2 text-center text-xs text-gray-400'>Diverse Dataset used for training</p>
                 </div>
 
                 {/* SAM3 image comparisons */}
