@@ -309,7 +309,9 @@ export default function HomePage() {
                       className='aspect-square w-full'
                     />
                   </div>
-                  <p className='mt-2 text-center text-xs text-gray-400'>Camera Mounting</p>
+                  <p className='mt-2 text-center text-xs text-gray-400'>
+                    Camera Mounting <span className='italic text-gray-300'>— drag to rotate and explore the full CAD file</span>
+                  </p>
                 </div>
               </div>
             </div>
