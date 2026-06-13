@@ -43,7 +43,7 @@ export const siteContent = {
   tldr: `GRASP trains a mobile manipulator entirely in GPU-accelerated simulation to autonomously replicate the agronomist's maize push test using RL with randomized deformable plant models, privileged reward shaping on FEM ground truth, and a SAM-segmented perception pipeline then distills the policy into a lightweight teacher–student model that recovers a continuous per-plant stiffness estimate from proprioception alone, transferring zero-shot to a real xArm6 + Bunker Pro robot.`,
 
   /** Path to graphical abstract image under public/ — leave empty until ready */
-  graphicalAbstract: '/images/thesis/rl/architecture.png' as string,
+  graphicalAbstract: '/images/thesis/rl/sim2real_pipeline.png' as string,
 
   abstract: `Maize stalks fail from the inside. Stalk rot hollows out the stem long before anything shows on the surface and by the time it's visible, the plant is already lost. Current detection methods don't scale: destructive sampling kills the plant, and hand-held push meters require a person walking every row.
 
