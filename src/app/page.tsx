@@ -192,9 +192,9 @@ export default function HomePage() {
 
           {/* MP4 video overrides everything if set */}
           {siteContent.heroVideo && (
-            <video autoPlay loop muted
+            <video autoPlay loop muted playsInline
               className='absolute inset-0 z-[2] h-full w-full object-cover object-top'
-              style={{ opacity: 0.4 }}>
+              style={{ opacity: 0.5 }}>
               <source src={asset(siteContent.heroVideo)} type='video/mp4' />
             </video>
           )}

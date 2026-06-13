@@ -54,10 +54,10 @@ The hard part isn't pushing. It's pushing well. A useful measurement requires co
 The key is privileged reward shaping. During training, every push is graded using ground truth the deployed robot will never have true stalk deflection from the simulator's finite-element nodes, true stiffness, clean contact force. The policy sees none of it. This lets us reward a clean, measurable force–deflection response without handing the policy the answer. A final teacher–student distillation step trains a lightweight inference model to recover a continuous per-plant stiffness estimate from proprioception alone no privileged signals, ready to run on hardware.`,
 
   /** Set to a path under public/video/ when you add hero background video */
-  heroVideo: '' as string,
+  heroVideo: '/video/horizontal_final.mp4' as string,
 
   /** Animated GIF shown as hero background at reduced opacity */
-  heroGif: '/video/hero.gif' as string,
+  heroGif: '' as string,
 
   slider: [
     { title: 'Motivation', video: '' },
