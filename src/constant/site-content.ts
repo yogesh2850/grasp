@@ -36,7 +36,7 @@ export const siteContent = {
     arxiv:    '#',
     github:   'https://github.com/yogesh2850/grasp',
     pdf:      '#',
-    dataset:  '#',
+    dataset:  'https://drive.google.com/drive/folders/1oKInHGRlhoLd2lh276SNCk2fOyr78lZS?usp=sharing',
     assembly: 'https://drive.google.com/drive/folders/12M6pMwm3hCQgPGQWIas_aWESB-KsiBAC?usp=sharing',
   },
 
