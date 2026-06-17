@@ -533,17 +533,42 @@ export default function HomePage() {
             {/* Result placeholders */}
             <div className='grid gap-6 md:grid-cols-2'>
               {[
-                'Training curves',
-                'Stiffness recovery',
-                'End-to-end results',
-                'Sim-to-real',
-              ].map((label) => (
+                {
+                  label: 'Training curves',
+                  image: '/images/thesis/results/metrics_mAP50_95M_YOLO.png',
+                  alt: 'YOLO mAP50-95M training metrics',
+                },
+                { label: 'Stiffness recovery' },
+                { label: 'End-to-end results' },
+                { label: 'Sim-to-real' },
+              ].map((item) => (
                 <div
-                  key={label}
-                  className='flex aspect-[4/3] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-white px-6 text-center'
+                  key={item.label}
+                  className={clsx(
+                    'w-full overflow-hidden rounded-xl border bg-white',
+                    'image' in item && item.image
+                      ? 'border-gray-200'
+                      : 'flex aspect-[4/3] flex-col items-center justify-center border-2 border-dashed border-gray-300 px-6 text-center',
+                  )}
                 >
-                  <p className='font-medium text-gray-500'>{label}</p>
-                  <p className='mt-1 text-xs text-gray-300'>coming soon</p>
+                  {'image' in item && item.image ? (
+                    <>
+                      <img
+                        src={asset(item.image)}
+                        alt={item.alt}
+                        className='w-full object-contain'
+                        loading='lazy'
+                      />
+                      <p className='border-t border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
+                        {item.label}
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className='font-medium text-gray-500'>{item.label}</p>
+                      <p className='mt-1 text-xs text-gray-300'>coming soon</p>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
