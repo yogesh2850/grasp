@@ -535,7 +535,7 @@ export default function HomePage() {
               {[
                 {
                   label: 'Training curves',
-                  image: '/images/thesis/results/metrics_mAP50_95M_YOLO.png',
+                  image: '/images/thesis/results/metrics_mAP50_95M_yolo.png',
                   alt: 'YOLO mAP50-95M training metrics',
                 },
                 { label: 'Stiffness recovery' },
