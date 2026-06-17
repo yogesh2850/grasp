@@ -403,6 +403,7 @@ export default function HomePage() {
                     rightSrc={asset('/video/correct_maize_mesh.mp4')}
                     leftLabel='Maize Plant'
                     rightLabel='Plant Mesh'
+                    initial={0.4}
                     className='aspect-[4/3] w-full'
                   />
                   <p className='mt-2 text-center text-xs text-gray-400'>
