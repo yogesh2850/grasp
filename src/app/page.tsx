@@ -397,7 +397,7 @@ export default function HomePage() {
               <h3 className='mb-1 text-2xl font-semibold'>Isaac Lab Setup</h3>
               <p className='mb-6 text-sm leading-relaxed text-gray-500'>
                 Deformable maize plant models with FEM physics are placed in GPU-parallel Isaac Lab
-                environments. Stalk stiffness is randomised log-uniformly over [10⁷, 10⁸]&nbsp;Pa
+                environments. Stalk stiffness is randomised log-uniformly over [5×10⁷, 10⁸]&nbsp;Pa
                 each episode.
               </p>
               <div className='grid gap-6 md:grid-cols-2'>
