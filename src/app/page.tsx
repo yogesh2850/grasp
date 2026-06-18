@@ -159,16 +159,18 @@ export default function HomePage() {
             {/* Links — white pill buttons */}
             <div className='flex flex-row flex-wrap items-center justify-center gap-3'>
               {[
-                { href: siteContent.links.arxiv,    icon: '/svg/arxiv.svg',    label: 'arXiv Page (coming soon)', alt: 'arXiv'    },
-                { href: siteContent.links.github,   icon: '/svg/github.svg',   label: 'GitHub Repo (coming soon)', alt: 'GitHub'   },
-                { href: siteContent.links.dataset,  icon: '/svg/dataset.svg',  label: 'Dataset',              alt: 'Dataset'  },
-                { href: siteContent.links.assembly, icon: '/svg/assembly.svg', label: 'Assembly CAD files', alt: 'Assembly' },
-              ].map(({ href, icon, label, alt }) => (
+                { href: siteContent.links.arxiv,    icon: '/svg/arxiv.svg',    label: 'arXiv Page (coming soon)', alt: 'arXiv',    external: true },
+                { href: siteContent.links.github,   icon: '/svg/github.svg',   label: 'GitHub Repo (coming soon)', alt: 'GitHub',   external: true },
+                { href: siteContent.links.dataset,  icon: '/svg/dataset.svg',  label: 'Dataset',                   alt: 'Dataset',  external: true },
+                { href: siteContent.links.assembly, icon: '/svg/assembly.svg', label: 'Assembly CAD files',        alt: 'Assembly', external: true },
+                { href: '#results',                 icon: '/svg/Lineplot.svg', label: 'Results',                   alt: 'Results',  external: false },
+              ].map(({ href, icon, label, alt, external }) => (
                 <a
                   key={label}
                   href={href}
-                  target='_blank'
-                  rel='noopener noreferrer'
+                  {...(external
+                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                    : {})}
                   className='flex items-center gap-2 rounded-full border border-white/60 bg-white/10 px-5 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/25 hover:border-white'
                   style={{ fontFamily: 'Raleway, sans-serif' }}
                 >
