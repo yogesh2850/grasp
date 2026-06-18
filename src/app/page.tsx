@@ -163,7 +163,7 @@ export default function HomePage() {
                 { href: siteContent.links.github,   icon: '/svg/github.svg',   label: 'GitHub Repo (coming soon)', alt: 'GitHub',   external: true },
                 { href: siteContent.links.dataset,  icon: '/images/icons/database.png', label: 'Dataset',                   alt: 'Dataset',  external: true },
                 { href: siteContent.links.assembly, icon: '/images/icons/assembly.png', label: 'Assembly CAD files',        alt: 'Assembly', external: true },
-                { href: '#results',                 icon: '/svg/results.svg',  label: 'Results',                   alt: 'Results',  external: false },
+                { href: '#results',                 icon: '/images/icons/results.png', label: 'Results',                   alt: 'Results',  external: false },
               ].map(({ href, icon, label, alt, external }) => (
                 <a
                   key={label}
