@@ -547,18 +547,27 @@ export default function HomePage() {
                   alt: 'YOLO mAP50-95M training metrics',
                 },
                 { label: 'Stiffness recovery', table: true },
-                { label: 'End-to-end results' },
-                { label: 'Sim-to-real' },
+                {
+                  label: 'Sim-to-real',
+                  colSpan: true,
+                  videos: [
+                    { src: '/video/12_03_NEW.mp4', label: '12/03' },
+                    { src: '/video/2_05.mp4', label: '2/05' },
+                  ],
+                },
               ].map((item) => (
                 <div
                   key={item.label}
                   className={clsx(
                     'w-full overflow-hidden rounded-xl border bg-white',
+                    'colSpan' in item && item.colSpan && 'md:col-span-2',
                     'image' in item && item.image
                       ? 'border-gray-200'
                       : 'table' in item && item.table
                         ? 'border-gray-200'
-                        : 'flex aspect-[4/3] flex-col items-center justify-center border-2 border-dashed border-gray-300 px-6 text-center',
+                        : 'videos' in item && item.videos
+                          ? 'border-gray-200'
+                          : 'flex aspect-[4/3] flex-col items-center justify-center border-2 border-dashed border-gray-300 px-6 text-center',
                   )}
                 >
                   {'image' in item && item.image ? (
@@ -602,6 +611,29 @@ export default function HomePage() {
                             ))}
                           </tbody>
                         </table>
+                      </div>
+                      <p className='border-t border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
+                        {item.label}
+                      </p>
+                    </>
+                  ) : 'videos' in item && item.videos ? (
+                    <>
+                      <div className='grid grid-cols-1 gap-3 p-3 sm:grid-cols-2'>
+                        {item.videos.map((video) => (
+                          <div key={video.src}>
+                            <video
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              controls
+                              className='w-full rounded-lg object-contain'
+                            >
+                              <source src={asset(video.src)} type='video/mp4' />
+                            </video>
+                            <p className='mt-1.5 text-center text-xs text-gray-500'>{video.label}</p>
+                          </div>
+                        ))}
                       </div>
                       <p className='border-t border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
                         {item.label}
