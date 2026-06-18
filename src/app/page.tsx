@@ -476,7 +476,7 @@ export default function HomePage() {
                   <img
                     src={asset('/images/thesis/rl/pipeline.png')}
                     alt='RL training pipeline'
-                    className='w-full object-contain'
+                    className='mx-auto block w-[80%] object-contain'
                     loading='lazy'
                   />
                 </div>
