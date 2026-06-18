@@ -526,15 +526,13 @@ export default function HomePage() {
                 { name: '3_12_GREEN',  caption: '3/12 (Green)'  },
                 { name: '3_19_GREEN',  caption: '3/19 (Green)'  },
               ].map(({ name, caption }) => (
-                <div key={name} className='min-w-0'>
-                  <div className='aspect-[3/4] w-full overflow-hidden rounded-xl border border-gray-200 bg-gray-50'>
-                    <img
-                      src={asset(`/images/thesis/results/${name}.png`)}
-                      alt={caption}
-                      className='h-full w-full object-contain'
-                      loading='lazy'
-                    />
-                  </div>
+                <div key={name}>
+                  <img
+                    src={asset(`/images/thesis/results/${name}.png`)}
+                    alt={caption}
+                    className='w-full rounded-xl border border-gray-200 object-contain'
+                    loading='lazy'
+                  />
                   <p className='mt-1.5 text-center text-xs text-gray-600'>{caption}</p>
                 </div>
               ))}
