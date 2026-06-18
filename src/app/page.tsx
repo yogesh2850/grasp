@@ -83,6 +83,9 @@ export default function HomePage() {
   const secondaryBgColor = 'bg-gray-100';
   const hlTextColor      = 'text-primary-600';
   const linkIconClass    = 'h-6 w-6 shrink-0';
+  const authorSecondLineStart = siteContent.authors.findIndex(
+    (author) => author.name === 'Krishna Muvva',
+  );
 
   return (
     <>
@@ -117,7 +120,7 @@ export default function HomePage() {
             >
               {siteContent.authors.map((author, i) => (
                 <React.Fragment key={author.name}>
-                  {i > 0 && ', '}
+                  {i > 0 && (i === authorSecondLineStart ? <br /> : ', ')}
                   {author.url ? (
                     <a
                       href={author.url}
