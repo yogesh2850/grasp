@@ -38,7 +38,7 @@ export const siteContent = {
     arxiv:    '#',
     github:   'https://github.com/yogesh2850/grasp',
     pdf:      '#',
-    dataset:  'https://drive.google.com/drive/folders/1oKInHGRlhoLd2lh276SNCk2fOyr78lZS?usp=sharing',
+    dataset:  'https://huggingface.co/datasets/yogesh2850/grasp',
     assembly: 'https://drive.google.com/drive/folders/12M6pMwm3hCQgPGQWIas_aWESB-KsiBAC?usp=sharing',
   },
 
