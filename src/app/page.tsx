@@ -544,7 +544,7 @@ export default function HomePage() {
                   image: '/images/thesis/results/metrics_mAP50_95M_yolo.png',
                   alt: 'YOLO mAP50-95M training metrics',
                 },
-                { label: 'Stiffness recovery' },
+                { label: 'Stiffness recovery', table: true },
                 { label: 'End-to-end results' },
                 { label: 'Sim-to-real' },
               ].map((item) => (
@@ -554,7 +554,9 @@ export default function HomePage() {
                     'w-full overflow-hidden rounded-xl border bg-white',
                     'image' in item && item.image
                       ? 'border-gray-200'
-                      : 'flex aspect-[4/3] flex-col items-center justify-center border-2 border-dashed border-gray-300 px-6 text-center',
+                      : 'table' in item && item.table
+                        ? 'border-gray-200'
+                        : 'flex aspect-[4/3] flex-col items-center justify-center border-2 border-dashed border-gray-300 px-6 text-center',
                   )}
                 >
                   {'image' in item && item.image ? (
@@ -565,6 +567,40 @@ export default function HomePage() {
                         className='w-full object-contain'
                         loading='lazy'
                       />
+                      <p className='border-t border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
+                        {item.label}
+                      </p>
+                    </>
+                  ) : 'table' in item && item.table ? (
+                    <>
+                      <div className='overflow-x-auto'>
+                        <table className='w-full min-w-[32rem] text-left text-xs sm:text-sm'>
+                          <thead>
+                            <tr className='border-b border-gray-200 bg-gray-50'>
+                              <th className='px-3 py-2 font-semibold text-gray-700'>Case</th>
+                              {Object.keys(siteContent.stiffnessRecovery.methods).map((method) => (
+                                <th key={method} className='px-3 py-2 font-semibold text-gray-700'>
+                                  {method}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {siteContent.stiffnessRecovery.cases.map((testCase, rowIndex) => (
+                              <tr key={testCase} className='border-b border-gray-100 last:border-0'>
+                                <td className='whitespace-nowrap px-3 py-2 font-medium text-gray-700'>
+                                  {testCase}
+                                </td>
+                                {Object.entries(siteContent.stiffnessRecovery.methods).map(([method, values]) => (
+                                  <td key={method} className='px-3 py-2 tabular-nums text-gray-600'>
+                                    {values[rowIndex].toFixed(3)}
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                       <p className='border-t border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
                         {item.label}
                       </p>
