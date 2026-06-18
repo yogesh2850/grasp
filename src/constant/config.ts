@@ -1,7 +1,7 @@
 export const siteConfig = {
   title: 'GRASP: Generalizable Robotic Adaptation for Sim-to-Real Plant Interaction',
   description:
-    'Project homepage for GRASP. Replace this description in src/constant/config.ts.',
+    'GRASP teaches a mobile manipulator to measure maize stalk stiffness in simulation and transfer zero-shot to real hardware using RL, perception, and proprioception.',
   url: 'https://yogesh2850.github.io/grasp',
 };
 
