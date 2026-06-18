@@ -539,17 +539,18 @@ export default function HomePage() {
             </div>
 
             {/* Result placeholders */}
-            <div className='grid gap-6 md:grid-cols-2'>
+            <div className='grid grid-cols-1 gap-6 md:grid-cols-5'>
               {[
                 {
-                  label: 'Training curves',
+                  label: 'YOLO Training curves',
                   image: '/images/thesis/results/metrics_mAP50_95M_yolo.png',
                   alt: 'YOLO mAP50-95M training metrics',
+                  colSpan: 2,
                 },
-                { label: 'Stiffness recovery', table: true },
+                { label: 'Stiffness recovery', table: true, colSpan: 3 },
                 {
                   label: 'Sim-to-real',
-                  colSpan: true,
+                  colSpan: 5,
                   videos: [
                     { src: '/video/12_03_NEW.mp4', label: '12/03' },
                     { src: '/video/2_05.mp4', label: '2/05' },
@@ -560,7 +561,9 @@ export default function HomePage() {
                   key={item.label}
                   className={clsx(
                     'w-full overflow-hidden rounded-xl border bg-white',
-                    'colSpan' in item && item.colSpan && 'md:col-span-2',
+                    'colSpan' in item && item.colSpan === 2 && 'md:col-span-2',
+                    'colSpan' in item && item.colSpan === 3 && 'md:col-span-3',
+                    'colSpan' in item && item.colSpan === 5 && 'md:col-span-5',
                     'image' in item && item.image
                       ? 'border-gray-200'
                       : 'table' in item && item.table
@@ -603,7 +606,13 @@ export default function HomePage() {
                                   {testCase}
                                 </td>
                                 {Object.entries(siteContent.stiffnessRecovery.methods).map(([method, values]) => (
-                                  <td key={method} className='px-3 py-2 tabular-nums text-gray-600'>
+                                  <td
+                                    key={method}
+                                    className={clsx(
+                                      'px-3 py-2 tabular-nums text-gray-600',
+                                      method === 'Proprio' && 'font-bold',
+                                    )}
+                                  >
                                     {values[rowIndex].toFixed(3)}
                                   </td>
                                 ))}
