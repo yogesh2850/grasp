@@ -685,10 +685,9 @@ export default function HomePage() {
                 {' '}The real bottleneck is vision. End-to-end policies don't generalize well to new visual scenes, so detecting the stalk and localizing the push point on an unseen crop would require retraining the segmentation model on that species. This is the most practical barrier to sim-to-real transfer.
               </p>
 
-              <p><strong>Q: 🤖 Why reinforcement learning instead of a scripted push?</strong></p>
+              <p><strong>Q: 🤖 Why Does an End-to-End Reinforcement Learning Policy Fail for Sim-to-Real Plant Interaction?</strong></p>
               <p style={{ marginLeft: '1.5rem', marginBottom: '1.5rem' }} className='text-sm leading-relaxed text-gray-600'>
-                A scripted push can get the arm to the stalk — but it can't adapt to what happens next. Stalk stiffness, exact contact geometry, and the arm's approach angle vary every time, and a fixed motion sequence has no way to modulate force in response to what it's feeling.
-                {' '}GRASP separates the two problems: vision finds the push point, IK delivers the arm there, and then RL takes over. The policy learns to adapt the push in real time — adjusting force and angle from proprioception to achieve a clean, informative deflection regardless of how stiff or compliant the plant turns out to be. That adaptability is what a scripted push can never have, and it's exactly what the push-quality reward is designed to produce.
+                Because the task combines perception, contact, and deformable plant mechanics, the RL policy must learn an extremely long causal chain from pixels to stiffness. Small sim-to-real errors in plant geometry, material properties, contact dynamics, and camera observations compound, causing the learned policy to overfit simulation behavior. RL also requires millions of interactions, which are impractical on real plants, and the latent variable of interest (stiffness) is not directly observable from vision alone. By decomposing the problem into perception, IK-based contact, and a proprioceptive stiffness estimator, GRASP avoids the sim-to-real fragility and poor sample efficiency of end-to-end reinforcement learning.
               </p>
 
               <p><strong>Q: 🔧 What can't GRASP do yet?</strong></p>
