@@ -621,16 +621,18 @@ export default function HomePage() {
                       <div className='grid grid-cols-1 gap-3 p-3 sm:grid-cols-2'>
                         {item.videos.map((video) => (
                           <div key={video.src}>
-                            <video
-                              autoPlay
-                              loop
-                              muted
-                              playsInline
-                              controls
-                              className='w-full rounded-lg object-contain'
-                            >
-                              <source src={asset(video.src)} type='video/mp4' />
-                            </video>
+                            <div className='relative aspect-[3/4] overflow-hidden rounded-lg bg-black'>
+                              <video
+                                src={asset(video.src)}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                controls
+                                preload='metadata'
+                                className='h-full w-full object-contain'
+                              />
+                            </div>
                             <p className='mt-1.5 text-center text-xs text-gray-500'>{video.label}</p>
                           </div>
                         ))}
