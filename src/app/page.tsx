@@ -515,9 +515,9 @@ export default function HomePage() {
               ))}
             </div>
 
-            {/* Real-plant result images — 6 plants in two rows */}
+            {/* Real-plant result images — 6 plants in one row */}
             <h3 className='mb-4 text-xl font-semibold'>Real plant setup for testing</h3>
-            <div className='mb-8 grid grid-cols-2 gap-3 md:grid-cols-3'>
+            <div className='mb-8 grid grid-cols-6 gap-2'>
               {[
                 { name: '2_12_YELLOW', caption: '2/12 (Yellow)' },
                 { name: '2_19_YELLOW', caption: '2/19 (Yellow)' },
@@ -526,7 +526,7 @@ export default function HomePage() {
                 { name: '3_12_GREEN',  caption: '3/12 (Green)'  },
                 { name: '3_19_GREEN',  caption: '3/19 (Green)'  },
               ].map(({ name, caption }) => (
-                <div key={name}>
+                <div key={name} className='min-w-0'>
                   <img
                     src={asset(`/images/thesis/results/${name}.png`)}
                     alt={caption}
