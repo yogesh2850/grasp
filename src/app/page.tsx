@@ -516,7 +516,7 @@ export default function HomePage() {
             </div>
 
             {/* Real-plant result images — 6 plants in two rows */}
-            <h3 className='mb-4 text-xl font-semibold'>Real plant setup for testing</h3>
+            <h3 className='mb-4 text-xl font-semibold'>Real plants for testing</h3>
             <div className='mb-8 grid grid-cols-2 gap-3 md:grid-cols-3'>
               {[
                 { name: '2_12_YELLOW', caption: '2/12 (Yellow)' },
