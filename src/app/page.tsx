@@ -547,7 +547,7 @@ export default function HomePage() {
                   alt: 'YOLO mAP50-95M training metrics',
                   colSpan: 2,
                 },
-                { label: 'Stiffness recovery', table: true, colSpan: 3 },
+                { label: 'Stiffness Estimation training based on just proprioception and distillation methods', table: true, colSpan: 3 },
                 {
                   label: 'Sim-to-real performance in real time (results are shown as P(soft))',
                   colSpan: 5,
@@ -583,18 +583,21 @@ export default function HomePage() {
                 >
                   {'image' in item && item.image ? (
                     <>
+                      <p className='border-b border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
+                        {item.label}
+                      </p>
                       <img
                         src={asset(item.image)}
                         alt={item.alt}
                         className='w-full object-contain'
                         loading='lazy'
                       />
-                      <p className='border-t border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
-                        {item.label}
-                      </p>
                     </>
                   ) : 'table' in item && item.table ? (
                     <>
+                      <p className='border-b border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
+                        {item.label}
+                      </p>
                       <div className='overflow-x-auto'>
                         <table className='w-full min-w-[32rem] text-left text-xs sm:text-sm'>
                           <thead>
@@ -629,9 +632,6 @@ export default function HomePage() {
                           </tbody>
                         </table>
                       </div>
-                      <p className='border-t border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
-                        {item.label}
-                      </p>
                     </>
                   ) : 'videos' in item && item.videos ? (
                     <>
