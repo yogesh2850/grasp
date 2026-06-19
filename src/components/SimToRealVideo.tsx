@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { asset } from '@/lib/asset';
 
@@ -11,12 +11,32 @@ type Props = {
 };
 
 export default function SimToRealVideo({ src, label, endMessage }: Props) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const hideTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [showMessage, setShowMessage] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
+    };
+  }, []);
+
+  const handleEnded = () => {
+    setShowMessage(true);
+
+    if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
+
+    hideTimeoutRef.current = setTimeout(() => {
+      setShowMessage(false);
+      void videoRef.current?.play();
+    }, 3000);
+  };
 
   return (
     <div>
       <div className='relative aspect-[3/4] overflow-hidden rounded-lg bg-black'>
         <video
+          ref={videoRef}
           src={asset(src)}
           autoPlay
           muted
@@ -24,7 +44,7 @@ export default function SimToRealVideo({ src, label, endMessage }: Props) {
           controls
           preload='metadata'
           className='h-full w-full object-contain'
-          onEnded={() => setShowMessage(true)}
+          onEnded={handleEnded}
         />
         {showMessage && (
           <div className='absolute right-2 top-2 rounded-md bg-black/70 px-2.5 py-1.5 text-xs font-semibold text-white backdrop-blur-sm'>
