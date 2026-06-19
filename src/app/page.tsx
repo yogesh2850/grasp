@@ -275,7 +275,7 @@ export default function HomePage() {
                     <span className='bg-gradient-to-b from-emerald-400 to-emerald-700 bg-clip-text text-transparent'>GRASP</span>
                     {' Framework — '}
                   </strong>
-                  A reinforcement-learning policy trained entirely in GPU-accelerated simulation (NVIDIA Isaac Lab) that transfers zero-shot to real hardware, executing consistent, repeatable pushes and recovering a continuous per-plant stiffness estimate.
+                  A sim-to-real robotic pipeline that locates maize stalks, performs controlled diagnostic pushes, and estimates stalk stiffness directly from proprioceptive interaction data.
                 </li>
               </ul>
             </div>
