@@ -47,13 +47,15 @@ export const siteContent = {
   /** Path to graphical abstract image under public/ — leave empty until ready */
   graphicalAbstract: '/images/thesis/rl/sim2real_pipeline.png' as string,
 
-  abstract: `Maize stalks fail from the inside. Stalk rot hollows out the stem long before anything shows on the surface and by the time it's visible, the plant is already lost. Current detection methods don't scale: destructive sampling kills the plant, and hand-held push meters require a person walking every row.
+  abstract: `Maize stalks fail from the inside. Stalk rot hollows out the stem long before visible symptoms appear, and by the time damage can be seen externally, the plant is often already lost. Current detection methods do not scale well: destructive sampling damages the plant, while hand-held push meters require a person to walk every row.
 
-We taught a robot to do what an agronomist does by hand: push the stalk, feel how far it bends, and read stiffness straight off the resistance.
+GRASP automates the agronomist's push test. The robot locates a maize stalk, performs a controlled diagnostic push, and estimates stalk stiffness from the resulting mechanical response.
 
-The hard part isn't pushing. It's pushing well. A useful measurement requires consistent contact at the right height, with enough force to read deflection but not enough to snap the stalk across plants whose stiffness varies by more than an order of magnitude. GRASP learns all of this in simulation. We train a reinforcement-learning policy in NVIDIA Isaac Lab on deformable maize models with randomized stiffness, giving it only what a real robot actually has: a camera image, a segmented stalk mask, and proprioception. The policy decides how to push; an inverse-kinematics controller drives a UFactory xArm6 to execute it.
+The challenge is not simply making contact—it is producing a consistent and informative interaction. A useful measurement requires pushing at the correct height and direction while generating enough deflection to reveal stiffness differences without damaging the plant. To study this process, we built a GPU-accelerated simulation environment in NVIDIA Isaac Lab using deformable maize models with randomized FEM stiffness properties spanning more than an order of magnitude. This environment was used to generate large-scale interaction data and evaluate robot–plant contact strategies under diverse plant conditions.
 
-The key is privileged reward shaping. During training, every push is graded using ground truth the deployed robot will never have true stalk deflection from the simulator's finite-element nodes, true stiffness, clean contact force. The policy sees none of it. This lets us reward a clean, measurable force–deflection response without handing the policy the answer. A final teacher–student distillation step trains a lightweight inference model to recover a continuous per-plant stiffness estimate from proprioception alone no privileged signals, ready to run on hardware.`,
+The deployed system follows a hierarchical perception–interaction–inference pipeline. A YOLO segmentation model, trained on SAM-3-generated labels from real field imagery, identifies the stalk. A classical inverse-kinematics controller then executes the approach, alignment, and diagnostic push using a UFactory xArm6 manipulator. Finally, a teacher–student recurrent neural network trained on simulated interaction data infers a soft/hard stiffness estimate directly from proprioceptive signals, without requiring vision during inference.
+
+The complete pipeline transfers to a real xArm6 mounted on an AgileX Bunker Pro platform, producing stiffness estimates that align with observed differences in stalk maturity and lignification.`,
 
   /** Set to a path under public/video/ when you add hero background video */
   heroVideo: '/video/horizontal_final.mp4' as string,
