@@ -549,7 +549,7 @@ export default function HomePage() {
                 },
                 { label: 'Stiffness recovery', table: true, colSpan: 3 },
                 {
-                  label: 'Sim-to-real',
+                  label: 'Sim-to-real performance in real time (results are shown as P(soft))',
                   colSpan: 5,
                   videos: [
                     {
@@ -635,6 +635,9 @@ export default function HomePage() {
                     </>
                   ) : 'videos' in item && item.videos ? (
                     <>
+                      <p className='border-b border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
+                        {item.label}
+                      </p>
                       <div className='grid grid-cols-1 gap-3 p-3 sm:grid-cols-2'>
                         {item.videos.map((video) => (
                           <SimToRealVideo
@@ -645,9 +648,6 @@ export default function HomePage() {
                           />
                         ))}
                       </div>
-                      <p className='border-t border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
-                        {item.label}
-                      </p>
                     </>
                   ) : (
                     <>
