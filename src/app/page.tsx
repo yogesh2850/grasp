@@ -540,23 +540,21 @@ export default function HomePage() {
             </div>
 
             {/* Result placeholders */}
-            <div className='grid grid-cols-1 gap-6 md:grid-cols-5'>
+            <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
               {[
                 {
                   label: 'YOLO Training curves',
                   image: '/images/thesis/results/metrics_mAP50_95M_yolo.png',
                   alt: 'YOLO mAP50-95M training metrics',
-                  colSpan: 2,
                 },
                 {
-                  label: 'Stiffness Estimation training based on just proprioception and distillation methods',
+                  label: 'Stiffness Estimation (proprioception vs distillation methods)',
                   image: '/images/thesis/results/soft_probability_heatmap_4k.png',
                   alt: 'Soft probability heatmap for stiffness estimation methods',
-                  colSpan: 3,
                 },
                 {
                   label: 'Sim-to-real performance in real time (results are shown as P(soft))',
-                  colSpan: 5,
+                  colSpan: 2,
                   videos: [
                     {
                       src: '/video/3_19_GREEN_clip.mp4',
@@ -576,8 +574,6 @@ export default function HomePage() {
                   className={clsx(
                     'w-full overflow-hidden rounded-xl border bg-white',
                     'colSpan' in item && item.colSpan === 2 && 'md:col-span-2',
-                    'colSpan' in item && item.colSpan === 3 && 'md:col-span-3',
-                    'colSpan' in item && item.colSpan === 5 && 'md:col-span-5',
                     'image' in item && item.image
                       ? 'border-gray-200'
                       : 'videos' in item && item.videos
