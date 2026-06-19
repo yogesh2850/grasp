@@ -7,7 +7,7 @@ import '@/lib/env';
 import Figure from '@/components/Figure';
 import ImageCompare from '@/components/Compare';
 import VideoCompare from '@/components/VideoCompare';
-import StepViewer from '@/components/StepViewer';
+import SimToRealVideo from '@/components/SimToRealVideo';
 import ArrowLink from '@/components/links/ArrowLink';
 import UnderlineLink from '@/components/links/UnderlineLink';
 import { siteContent } from '@/constant/site-content';
@@ -552,8 +552,16 @@ export default function HomePage() {
                   label: 'Sim-to-real',
                   colSpan: 5,
                   videos: [
-                    { src: '/video/12_03_NEW.mp4', label: '12/03' },
-                    { src: '/video/2_05.mp4', label: '2/05' },
+                    {
+                      src: '/video/3_19_GREEN_clip.mp4',
+                      label: '3/19 (Green)',
+                      endMessage: 'P(soft) = 0.733',
+                    },
+                    {
+                      src: '/video/2_19_YELLOW_clip.mp4',
+                      label: '2/19 (Yellow)',
+                      endMessage: 'P(soft) = 0.514',
+                    },
                   ],
                 },
               ].map((item) => (
@@ -629,21 +637,12 @@ export default function HomePage() {
                     <>
                       <div className='grid grid-cols-1 gap-3 p-3 sm:grid-cols-2'>
                         {item.videos.map((video) => (
-                          <div key={video.src}>
-                            <div className='relative aspect-[3/4] overflow-hidden rounded-lg bg-black'>
-                              <video
-                                src={asset(video.src)}
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                controls
-                                preload='metadata'
-                                className='h-full w-full object-contain'
-                              />
-                            </div>
-                            <p className='mt-1.5 text-center text-xs text-gray-500'>{video.label}</p>
-                          </div>
+                          <SimToRealVideo
+                            key={video.src}
+                            src={video.src}
+                            label={video.label}
+                            endMessage={video.endMessage}
+                          />
                         ))}
                       </div>
                       <p className='border-t border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
