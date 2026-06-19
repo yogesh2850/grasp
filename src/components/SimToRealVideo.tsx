@@ -47,8 +47,10 @@ export default function SimToRealVideo({ src, label, endMessage }: Props) {
           onEnded={handleEnded}
         />
         {showMessage && (
-          <div className='absolute right-2 top-2 rounded-md bg-black/70 px-2.5 py-1.5 text-xs font-semibold text-white backdrop-blur-sm'>
-            {endMessage}
+          <div className='absolute inset-0 flex items-center justify-center'>
+            <div className='rounded-lg bg-black/75 px-5 py-3 text-center text-lg font-semibold text-white backdrop-blur-sm sm:text-xl'>
+              {endMessage}
+            </div>
           </div>
         )}
       </div>

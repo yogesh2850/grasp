@@ -587,15 +587,15 @@ export default function HomePage() {
                 >
                   {'image' in item && item.image ? (
                     <>
-                      <p className='border-b border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
-                        {item.label}
-                      </p>
                       <img
                         src={asset(item.image)}
                         alt={item.alt}
                         className='w-full object-contain'
                         loading='lazy'
                       />
+                      <p className='border-t border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
+                        {item.label}
+                      </p>
                     </>
                   ) : 'videos' in item && item.videos ? (
                     <>
