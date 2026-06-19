@@ -42,7 +42,7 @@ export const siteContent = {
     assembly: 'https://drive.google.com/drive/folders/12M6pMwm3hCQgPGQWIas_aWESB-KsiBAC?usp=sharing',
   },
 
-  tldr: `GRASP trains a mobile manipulator entirely in GPU-accelerated simulation to autonomously replicate the agronomist's maize push test using RL with randomized deformable plant models, privileged reward shaping on FEM ground truth, and a SAM-segmented perception pipeline then distills the policy into a lightweight teacher–student model that recovers a continuous per-plant stiffness estimate from proprioception alone, transferring zero-shot to a real xArm6 + Bunker Pro robot.`,
+  tldr: `GRASP replicates the agronomist's maize push test through a hierarchical perception–interaction–inference pipeline. A YOLO segmentation model, trained on SAM-3-generated labels from real field imagery, identifies the stalk; a classical IK-based controller then guides the manipulator through approach and alignment. A recurrent neural network (RNN), trained on interaction data collected in a GPU-accelerated deformable-body simulation with randomized FEM plant mechanics, infers soft/hard stalk stiffness from proprioception alone without requiring vision at inference. The system transfers to a real xArm6 + Bunker Pro robot setup, producing stiffness estimates that align with observed stalk lignification and maturity trends.`,
 
   /** Path to graphical abstract image under public/ — leave empty until ready */
   graphicalAbstract: '/images/thesis/rl/sim2real_pipeline.png' as string,
