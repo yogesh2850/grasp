@@ -8,6 +8,7 @@ import Figure from '@/components/Figure';
 import ImageCompare from '@/components/Compare';
 import VideoCompare from '@/components/VideoCompare';
 import SimToRealVideo from '@/components/SimToRealVideo';
+import StepViewer from '@/components/StepViewer';
 import ArrowLink from '@/components/links/ArrowLink';
 import UnderlineLink from '@/components/links/UnderlineLink';
 import { siteContent } from '@/constant/site-content';
