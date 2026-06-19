@@ -326,7 +326,7 @@ export default function HomePage() {
             <div className='mb-14'>
               <h3 className='mb-1 text-2xl font-semibold'>Perception Pipeline</h3>
               <p className='mb-6 text-sm leading-relaxed text-gray-500'>
-                SAM&nbsp;3 zero-shot annotations are distilled into a real-time YOLOv8-seg model
+                SAM&nbsp;3 zero-shot annotations are used to train a real-time YOLOv8-seg model
                 running at 30&nbsp;Hz. Drag each slider to compare input and output.
               </p>
               <div className='grid gap-6 md:grid-cols-2'>
