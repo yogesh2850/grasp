@@ -53,8 +53,6 @@ GRASP automates the agronomist's push test. The robot locates a maize stalk, per
 
 The challenge is not simply making contact—it is producing a consistent and informative interaction. A useful measurement requires pushing at the correct height and direction while generating enough deflection to reveal stiffness differences without damaging the plant. To study this process, we built a GPU-accelerated simulation environment in NVIDIA Isaac Lab using deformable maize models with randomized FEM stiffness properties spanning more than an order of magnitude. This environment was used to generate large-scale interaction data and evaluate robot–plant contact strategies under diverse plant conditions.
 
-The deployed system follows a hierarchical perception–interaction–inference pipeline. A YOLO segmentation model, trained on SAM-3-generated labels from real field imagery, identifies the stalk. A classical inverse-kinematics controller then executes the approach, alignment, and diagnostic push using a UFactory xArm6 manipulator. Finally, a teacher–student recurrent neural network trained on simulated interaction data infers a soft/hard stiffness estimate directly from proprioceptive signals, without requiring vision during inference.
-
 The complete pipeline transfers to a real xArm6 mounted on an AgileX Bunker Pro platform, producing stiffness estimates that align with observed differences in stalk maturity and lignification.`,
 
   /** Set to a path under public/video/ when you add hero background video */
