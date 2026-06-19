@@ -547,7 +547,12 @@ export default function HomePage() {
                   alt: 'YOLO mAP50-95M training metrics',
                   colSpan: 2,
                 },
-                { label: 'Stiffness Estimation training based on just proprioception and distillation methods', table: true, colSpan: 3 },
+                {
+                  label: 'Stiffness Estimation training based on just proprioception and distillation methods',
+                  image: '/images/thesis/results/soft_probability_heatmap_4k.png',
+                  alt: 'Soft probability heatmap for stiffness estimation methods',
+                  colSpan: 3,
+                },
                 {
                   label: 'Sim-to-real performance in real time (results are shown as P(soft))',
                   colSpan: 5,
@@ -574,11 +579,9 @@ export default function HomePage() {
                     'colSpan' in item && item.colSpan === 5 && 'md:col-span-5',
                     'image' in item && item.image
                       ? 'border-gray-200'
-                      : 'table' in item && item.table
+                      : 'videos' in item && item.videos
                         ? 'border-gray-200'
-                        : 'videos' in item && item.videos
-                          ? 'border-gray-200'
-                          : 'flex aspect-[4/3] flex-col items-center justify-center border-2 border-dashed border-gray-300 px-6 text-center',
+                        : 'flex aspect-[4/3] flex-col items-center justify-center border-2 border-dashed border-gray-300 px-6 text-center',
                   )}
                 >
                   {'image' in item && item.image ? (
@@ -592,46 +595,6 @@ export default function HomePage() {
                         className='w-full object-contain'
                         loading='lazy'
                       />
-                    </>
-                  ) : 'table' in item && item.table ? (
-                    <>
-                      <p className='border-b border-gray-100 px-4 py-2 text-center text-sm font-medium text-gray-500'>
-                        {item.label}
-                      </p>
-                      <div className='overflow-x-auto'>
-                        <table className='w-full min-w-[32rem] text-left text-xs sm:text-sm'>
-                          <thead>
-                            <tr className='border-b border-gray-200 bg-gray-50'>
-                              <th className='px-3 py-2 font-semibold text-gray-700'>Case</th>
-                              {Object.keys(siteContent.stiffnessRecovery.methods).map((method) => (
-                                <th key={method} className='px-3 py-2 font-semibold text-gray-700'>
-                                  {method}
-                                </th>
-                              ))}
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {siteContent.stiffnessRecovery.cases.map((testCase, rowIndex) => (
-                              <tr key={testCase} className='border-b border-gray-100 last:border-0'>
-                                <td className='whitespace-nowrap px-3 py-2 font-medium text-gray-700'>
-                                  {testCase}
-                                </td>
-                                {Object.entries(siteContent.stiffnessRecovery.methods).map(([method, values]) => (
-                                  <td
-                                    key={method}
-                                    className={clsx(
-                                      'px-3 py-2 tabular-nums text-gray-600',
-                                      method === 'Proprio' && 'font-bold',
-                                    )}
-                                  >
-                                    {values[rowIndex].toFixed(3)}
-                                  </td>
-                                ))}
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
                     </>
                   ) : 'videos' in item && item.videos ? (
                     <>

@@ -96,25 +96,6 @@ The key is privileged reward shaping. During training, every push is graded usin
 
   figures: [] as { src: string; caption: string; idx: number }[],
 
-  stiffnessRecovery: {
-    cases: [
-      '12_02_Yellow',
-      '12_03_Yellow',
-      '19_02_Yellow',
-      '12_03_Green',
-      '19_03_Green',
-      '2_05_Green',
-    ],
-    methods: {
-      Proprio:  [0.568, 0.276, 0.587, 0.221, 0.706, 0.745],
-      LowW:     [0.994, 0.919, 0.950, 0.982, 0.992, 0.989],
-      ConfW:    [0.962, 0.809, 0.896, 0.956, 0.972, 0.966],
-      CorrGate: [0.917, 0.544, 0.805, 0.640, 0.804, 0.804],
-      Hint:     [0.963, 0.827, 0.916, 0.917, 0.964, 0.963],
-      RKD:      [0.994, 0.807, 0.902, 0.841, 0.961, 0.975],
-    },
-  },
-
   citation: `@mastersthesis{chawla2026grasp,
   title   = {GRASP: Generalizable Robotic Adaptation for Sim-to-Real Plant Interaction},
   author  = {Chawla, Yogesh},
