@@ -516,27 +516,42 @@ export default function HomePage() {
               ))}
             </div>
 
-            {/* Real-plant result images — 6 plants in two rows */}
+            {/* Real-plant result images */}
             <h3 className='mb-4 text-xl font-semibold'>Real plants for testing</h3>
-            <div className='mb-8 grid grid-cols-2 gap-3 md:grid-cols-3'>
-              {[
-                { name: '2_12_YELLOW', caption: '2/12 (Yellow)' },
-                { name: '2_19_YELLOW', caption: '2/19 (Yellow)' },
-                { name: '3_12_YELLOW', caption: '3/12 (Yellow)' },
-                { name: '2_5_GREEN',   caption: '2/5 (Green)'   },
-                { name: '3_12_GREEN',  caption: '3/12 (Green)'  },
-                { name: '3_19_GREEN',  caption: '3/19 (Green)'  },
-              ].map(({ name, caption }) => (
-                <div key={name}>
-                  <img
-                    src={asset(`/images/thesis/results/${name}.png`)}
-                    alt={caption}
-                    className='w-full rounded-xl border border-gray-200 object-contain'
-                    loading='lazy'
-                  />
-                  <p className='mt-1.5 text-center text-xs text-gray-600'>{caption}</p>
-                </div>
-              ))}
+            <div className='mb-8 flex flex-col gap-3'>
+              <div className='grid grid-cols-2 gap-3 md:grid-cols-3'>
+                {[
+                  { name: '2_12_YELLOW', caption: '2/12 (Yellow)' },
+                  { name: '2_19_YELLOW', caption: '2/19 (Yellow)' },
+                  { name: '3_12_YELLOW', caption: '3/12 (Yellow)' },
+                ].map(({ name, caption }) => (
+                  <div key={name}>
+                    <img
+                      src={asset(`/images/thesis/results/${name}.png`)}
+                      alt={caption}
+                      className='w-full rounded-xl border border-gray-200 object-contain'
+                      loading='lazy'
+                    />
+                    <p className='mt-1.5 text-center text-xs text-gray-600'>{caption}</p>
+                  </div>
+                ))}
+              </div>
+              <div className='flex flex-wrap justify-center gap-3'>
+                {[
+                  { name: '2_5_GREEN',  caption: '2/5 (Green)'  },
+                  { name: '3_19_GREEN', caption: '3/19 (Green)' },
+                ].map(({ name, caption }) => (
+                  <div key={name} className='w-[calc(50%-0.375rem)] md:w-[calc(33.333%-0.5rem)]'>
+                    <img
+                      src={asset(`/images/thesis/results/${name}.png`)}
+                      alt={caption}
+                      className='w-full rounded-xl border border-gray-200 object-contain'
+                      loading='lazy'
+                    />
+                    <p className='mt-1.5 text-center text-xs text-gray-600'>{caption}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Result placeholders */}
