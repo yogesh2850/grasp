@@ -47,7 +47,7 @@ export const siteContent = {
   tldr: `GRASP replicates the agronomist's maize push test through a hierarchical perception–interaction–inference pipeline. A YOLO segmentation model, trained on SAM-3-generated labels from real field imagery, identifies the stalk; a classical IK-based controller then guides the manipulator through approach and alignment. A recurrent neural network (RNN), trained on interaction data collected in a GPU-accelerated deformable-body simulation with randomized FEM plant mechanics, infers soft/hard stalk stiffness from proprioception alone without requiring vision at inference. The system transfers to a real xArm6 + Bunker Pro robot setup, producing stiffness estimates that align with observed stalk lignification and maturity trends.`,
 
   /** Path to graphical abstract image under public/ — leave empty until ready */
-  graphicalAbstract: '/images/thesis/rl/sim2real_pipeline.png' as string,
+  graphicalAbstract: '/images/GRASP_pipeline.png' as string,
 
   abstract: `Maize stalks fail from the inside. Stalk rot hollows out the stem long before visible symptoms appear, and by the time damage can be seen externally, the plant is often already lost. Current detection methods do not scale well: destructive sampling damages the plant, while hand-held push meters require a person to walk every row.
 
