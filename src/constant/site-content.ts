@@ -24,6 +24,8 @@ export const siteContent = {
     { name: 'Kunjan Theo Joseph', url: 'https://www.linkedin.com/in/k-theo-joseph/',                             affiliations: '2' },
     { name: 'Soumik Sarkar',      url: 'https://www.engineering.iastate.edu/people/profile/soumiks/',            affiliations: '2' },
     { name: 'Santosh Pitla',      url: 'https://bse.unl.edu/person/santosh-pitla/',                              affiliations: '1' },
+    { name: 'Yeyin Shi',          url: 'https://bse.unl.edu/person/yeyin-shi/',                                  affiliations: '1' },
+    { name: 'Nikhil Satyala',     url: 'https://computing.unl.edu/person/nikhil-satyala/',                       affiliations: '1' },
   ],
 
   affiliations: [
