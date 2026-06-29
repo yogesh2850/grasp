@@ -38,7 +38,7 @@ export const siteContent = {
 
   links: {
     arxiv:    '#',
-    github:   'https://github.com/yogesh2850/grasp',
+    github:   'https://github.com/yogesh2850/Plant_Manipulation/',
     pdf:      '#',
     dataset:  'https://huggingface.co/datasets/yogesh2850/grasp',
     assembly: 'https://drive.google.com/drive/folders/12M6pMwm3hCQgPGQWIas_aWESB-KsiBAC?usp=sharing',
