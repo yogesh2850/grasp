@@ -220,18 +220,20 @@ export default function HomePage() {
 
         {/* ── Abstract (with graphical abstract image above text) ───────── */}
         <section id='abstract' className={clsx(bgColor, textColor)}>
-          <div className='layout py-12'>
-            <h2 className='pb-6 text-center'>Introduction</h2>
+          <div className='py-12'>
+            <div className='layout'>
+              <h2 className='pb-6 text-center'>Introduction</h2>
+            </div>
 
-            {/* Graphical abstract image */}
+            {/* Graphical abstract image — 30% wider than previous max-w-4xl (56rem → 72.8rem) */}
             {siteContent.graphicalAbstract ? (
               <img
                 src={asset(siteContent.graphicalAbstract)}
                 alt='Graphical abstract'
-                className='mx-auto mb-8 w-full max-w-4xl rounded-xl shadow-md'
+                className='mx-auto mb-8 w-11/12 max-w-[72.8rem] rounded-xl shadow-md'
               />
             ) : (
-              <div className='mx-auto mb-8 flex max-w-4xl items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 py-20 text-center text-sm text-gray-400'>
+              <div className='mx-auto mb-8 flex w-11/12 max-w-[72.8rem] items-center justify-center rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 py-20 text-center text-sm text-gray-400'>
                 <div>
                   <p className='font-medium'>Graphical abstract coming soon</p>
                   <p className='mt-1 text-xs'>
@@ -242,10 +244,12 @@ export default function HomePage() {
               </div>
             )}
 
-            <div className='space-y-4'>
-              {siteContent.abstract.split('\n\n').map((para, i) => (
-                <p key={i} className='text-pretty'>{para}</p>
-              ))}
+            <div className='layout'>
+              <div className='space-y-4'>
+                {siteContent.abstract.split('\n\n').map((para, i) => (
+                  <p key={i} className='text-pretty'>{para}</p>
+                ))}
+              </div>
             </div>
           </div>
         </section>
